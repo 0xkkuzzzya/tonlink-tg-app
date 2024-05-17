@@ -8,6 +8,7 @@ const Container = styled.div`
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
+	padding-bottom: 20px;
 `
 
 
