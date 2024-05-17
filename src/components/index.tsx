@@ -6,8 +6,9 @@ import mainbg from '../assets/main-bg.jpg'
 
 const Container = styled.div`
     width: 390px;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
+    padding-bottom: 20px;
     background-image: url(${mainbg});
     background-repeat: no-repeat;
     background-position: center center;
