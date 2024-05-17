@@ -71,7 +71,7 @@ export const Balance = () => {
                 <Text>0 $TL in subscriptions</Text>
             </div>
             <LinkContainer>
-                <LinkButton style={{marginLeft: "20px"}}>
+                <LinkButton style={{marginLeft: "25px"}}>
                     <LinkImg src={LinkToSend} />
                 </LinkButton>
                 <LinkButton>
