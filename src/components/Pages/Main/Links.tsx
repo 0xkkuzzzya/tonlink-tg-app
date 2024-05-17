@@ -29,6 +29,7 @@ const LinkName = styled.a`
     font-weight: 600;
     color: #fff;
     white-space: nowrap;
+    margin-left: 10px;
 `
 
 const Description = styled.a`
@@ -37,6 +38,7 @@ const Description = styled.a`
     color: #707579;
     margin-top: 10px;
     white-space: nowrap;
+    margin-left: 10px;
 `
 
 const LinkButton = styled.div`

@@ -15,12 +15,16 @@ const Text = styled.a`
     font-size: 14px;
     font-weight: 600;
     color: #707579;
+    margin-left: 10px;
+    white-space: nowrap;
 `
 
 const BalanceText = styled.a`
     font-size: 24px;
     font-weight: 600;
     color: #fff;
+    margin-left: 10px;
+    white-space: nowrap;
 `
 
 const BalanceLogo = styled.img`
