@@ -24,8 +24,8 @@ const BalanceText = styled.a`
 `
 
 const BalanceLogo = styled.img`
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     margin-left: 10px;
 `
 
@@ -45,6 +45,14 @@ const LinkImg = styled.img`
     height: 25px;
 `
 
+const LinkContainer = styled.div`
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+`
+
 
 export const Balance = () => {
     return (
@@ -58,14 +66,14 @@ export const Balance = () => {
                 <Text>0 $TL in delegations</Text>
                 <Text>0 $TL in subscriptions</Text>
             </div>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", width: "50%" }}>
-                <LinkButton>
+            <LinkContainer>
+                <LinkButton style={{marginLeft: "20px"}}>
                     <LinkImg src={LinkToSend} />
                 </LinkButton>
                 <LinkButton>
                     <LinkImg src={LinkToDeposit} />
                 </LinkButton>
-            </div>
+            </LinkContainer>
         </Container>
     )
 }

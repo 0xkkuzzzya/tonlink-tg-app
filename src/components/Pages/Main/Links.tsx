@@ -56,7 +56,7 @@ const LinkImg = styled.img`
 `
 
 const LinkButtonLong = styled.div`
-    width: 90%;
+    width: 87.5%;
     height: 50px;
     padding: 5px 10px;
     display: flex;
@@ -97,14 +97,14 @@ export const Links = () => {
                         <LinkName style={{ fontSize: "16px" }}>Official site</LinkName>
                         <Description style={{ fontSize: "11px", marginTop: "5px" }}>Explore official website and documentation</Description>
                     </div>
-                    <LinkImg src={LinkToOficialSite} />
+                    <LinkImg style={{marginRight: "4px"}} src={LinkToOficialSite} />
                 </LinkButtonLong>
                 <LinkButtonLong style={{marginTop: "25px"}}>
                     <div style={{display: "flex", flexDirection: "column"}}>
                         <LinkName style={{ fontSize: "16px" }}>Telegram Сhannel</LinkName>
                         <Description style={{ fontSize: "11px", marginTop: "5px" }}>Explore official telegram channel</Description>
                     </div>
-                    <LinkImg src={LinkToTelegram} />
+                    <LinkImg style={{marginRight: "4px"}} src={LinkToTelegram} />
                 </LinkButtonLong>
             </Container1>
         </div>
