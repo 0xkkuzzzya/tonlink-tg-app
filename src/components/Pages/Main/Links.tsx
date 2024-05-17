@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import LinkToDelegate from '../../../assets/Link-to-delegate.svg'
-import LinkToSubscription from '../../../assets/Link-to-subscription.svg'
-import LinkToOficialSite from '../../../assets/Link-to-officalsite.svg'
-import LinkToTelegram from '../../../assets/Link-to-telegram.svg'
+import LinkToDelegate from '../../../assets/Link-to-delegate.webp'
+import LinkToSubscription from '../../../assets/Link-to-subscription.webp'
+import LinkToOficialSite from '../../../assets/Link-to-officalsite.webp'
+import LinkToTelegram from '../../../assets/Link-to-telegram.webp'
 
 const Container = styled.div`
     width: 100%;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TonLinkLogo from '../../assets/TonLink.svg'
+import TonLinkLogo from '../../assets/TonLink.webp'
 import { TonConnectButton } from "@tonconnect/ui-react";
 
 const Container = styled.div`

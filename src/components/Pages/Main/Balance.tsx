@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import TonLinkLogo from '../../../assets/TonLink.svg'
-import LinkToDeposit from '../../../assets/Link-to-deposit.svg'
-import LinkToSend from '../../../assets/Link-to-send-token.svg'
+import TonLinkLogo from '../../../assets/TonLink.webp'
+import LinkToDeposit from '../../../assets/Link-to-deposit.webp'
+import LinkToSend from '../../../assets/Link-to-send-token.webp'
 
 const Container = styled.div`
     width: 85%;
