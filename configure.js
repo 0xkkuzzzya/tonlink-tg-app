@@ -5,7 +5,7 @@ const resp = await axios.post(
         type: "web_app",
         text: "Launch Webapp",
         web_app: {
-          url: url,
+          url: 'https://tonlink-tg-app.vercel.app',
         },
       },
     }
