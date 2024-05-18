@@ -9,7 +9,7 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     background: #1C1C1E;
-    padding: 15px;
+    padding: 12px 15px;
     border-radius: 15px;
     margin-top: 20px;
 `
@@ -19,7 +19,7 @@ const Container1 = styled.div`
     display: flex;
     flex-direction: column;
     background: #1C1C1E;
-    padding: 15px;
+    padding: 12px 15px;
     border-radius: 15px;
     margin-top: 20px;
 `
