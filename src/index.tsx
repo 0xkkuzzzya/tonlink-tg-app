@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 );
 
 const manifestUrl =
-	"https://raw.githubusercontent.com/ton-community/tutorials/main/03-client/test/public/tonconnect-manifest.json";
+	"https://raw.githubusercontent.com/0xkkuzzzya/tonlink-tg-app/main/public/manifest.json";
 
 root.render(
 	<BrowserRouter>
