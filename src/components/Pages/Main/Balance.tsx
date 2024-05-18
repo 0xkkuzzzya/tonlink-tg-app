@@ -64,7 +64,7 @@ export const Balance = () => {
             <div style={{ display: "flex", flexDirection: "column", width: "50%", gap: "10px" }}>
                 <Text>Your balance</Text>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <BalanceText>1221</BalanceText>
+                    <BalanceText>13654.23</BalanceText>
                     <BalanceLogo src={TonLinkLogo} />
                 </div>
                 <Text>0 $TL in delegations</Text>
