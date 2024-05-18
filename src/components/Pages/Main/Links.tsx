@@ -14,12 +14,17 @@ const Container = styled.div`
     margin-top: 20px;
 `
 
+const Column = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
 const Container1 = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
     background: #1C1C1E;
-    padding: 12px 15px;
+    padding: 15px;
     border-radius: 15px;
     margin-top: 20px;
 `
@@ -75,39 +80,43 @@ export const Links = () => {
     return (
         <div style={{ display: "flex", flexDirection: "column", width: "85%", alignItems: "center" }}>
             <Container>
-                <div style={{ display: "flex", flexDirection: "column" }}>
+                <Column>
                     <LinkName>Delegation</LinkName>
                     <Description>Delegate $TL and earn rewards</Description>
-                </div>
+                </Column>
                 <LinkButton>
                     <LinkImg src={LinkToDelegate} />
                 </LinkButton>
             </Container>
             <Container>
-                <div style={{ display: "flex", flexDirection: "column" }}>
+                <Column>
                     <LinkName>Subscription</LinkName>
                     <Description>Manage your subscriptions</Description>
-                </div>
+                </Column>
                 <LinkButton>
                     <LinkImg src={LinkToSubscription} />
                 </LinkButton>
             </Container>
             <Container1>
                 <LinkName>Explore ecosystem </LinkName>
-                <LinkButtonLong>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <LinkName style={{ fontSize: "16px" }}>Official site</LinkName>
-                        <Description style={{ fontSize: "11px", marginTop: "5px" }}>Explore official website and documentation</Description>
-                    </div>
-                    <LinkImg style={{marginRight: "4px"}} src={LinkToOficialSite} />
-                </LinkButtonLong>
-                <LinkButtonLong style={{marginTop: "25px"}}>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <LinkName style={{ fontSize: "16px" }}>Telegram Сhannel</LinkName>
-                        <Description style={{ fontSize: "11px", marginTop: "5px" }}>Explore official telegram channel</Description>
-                    </div>
-                    <LinkImg style={{marginRight: "4px"}} src={LinkToTelegram} />
-                </LinkButtonLong>
+                <a href="https://tonlink.network" target="_blank" style={{ textDecoration: "none" }}>
+                    <LinkButtonLong>
+                        <Column>
+                            <LinkName style={{ fontSize: "16px" }}>Official site</LinkName>
+                            <Description style={{ fontSize: "11px", marginTop: "5px" }}>Explore official website and documentation</Description>
+                        </Column>
+                        <LinkImg style={{ marginRight: "4px" }} src={LinkToOficialSite} />
+                    </LinkButtonLong>
+                </a>
+                <a href="https://t.me/tonlink_en" target="_blank" style={{ textDecoration: "none", marginTop: "15px" }}>
+                    <LinkButtonLong style={{ marginTop: "0px" }}>
+                        <Column>
+                            <LinkName style={{ fontSize: "16px" }}>Telegram Сhannel</LinkName>
+                            <Description style={{ fontSize: "11px", marginTop: "5px" }}>Explore official telegram channel</Description>
+                        </Column>
+                        <LinkImg style={{ marginRight: "4px" }} src={LinkToTelegram} />
+                    </LinkButtonLong>
+                </a>
             </Container1>
         </div>
     )
