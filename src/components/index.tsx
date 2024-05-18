@@ -14,7 +14,6 @@ const Container = styled.div`
 
 const PageContainer = styled.div`
     width: 100%;
-    margin-top: 20px;
     display: flex;
 `
 
