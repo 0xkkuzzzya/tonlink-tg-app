@@ -6,7 +6,6 @@ import { MainPage } from "./Pages/Main";
 
 const Container = styled.div`
     width: 390px;
-    height: 100vh;
     margin: 0 auto;
     @media (max-width: 390px) {
         width: 100%;
