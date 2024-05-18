@@ -8,7 +8,7 @@ const Container = styled.div`
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
-	padding-bottom: 20px;
+	padding-bottom: 23px;
 	height: 100vh;
 	@media (max-height: 670px) {
 		height: 100%;
