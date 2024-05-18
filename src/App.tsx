@@ -4,15 +4,9 @@ import styled from 'styled-components';
 import mainbg from './assets/main-bg.jpg'
 
 const Container = styled.div`
-	background-image: url(${mainbg});
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
+	background: #000;
 	padding-bottom: 23px;
-	height: 100vh;
-	@media (max-height: 670px) {
-		height: 100%;
-	}
+	height: 100%;
 `
 
 
