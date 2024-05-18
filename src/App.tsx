@@ -9,6 +9,10 @@ const Container = styled.div`
     background-position: center center;
     background-attachment: fixed;
 	padding-bottom: 20px;
+	height: 100vh;
+	@media (max-height: 670px) {
+		height: 100%;
+	}
 `
 
 
