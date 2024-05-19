@@ -3,8 +3,6 @@ import TonLinkLogo from '../../../assets/TonLink.webp'
 import LinkToDeposit from '../../../assets/Link-to-deposit.webp'
 import LinkToSend from '../../../assets/Link-to-send-token.webp'
 import { useTonAddress } from "@tonconnect/ui-react";
-import { getHttpEndpoint } from "@orbs-network/ton-access";
-import { TonClient, Address } from "ton";
 import { useEffect, useState } from "react";
 import { GetBalance } from "../../../web3/balance";
 
@@ -74,7 +72,7 @@ export const Balance = () => {
             setBalance(tb)
         }
         main()
-    }, [])
+    }, [userFriendlyAddress])
 
     return (
         <Container>
