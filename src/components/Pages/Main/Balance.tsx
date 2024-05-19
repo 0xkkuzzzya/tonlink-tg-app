@@ -2,6 +2,12 @@ import styled from "styled-components";
 import TonLinkLogo from '../../../assets/TonLink.webp'
 import LinkToDeposit from '../../../assets/Link-to-deposit.webp'
 import LinkToSend from '../../../assets/Link-to-send-token.webp'
+import { useTonAddress } from "@tonconnect/ui-react";
+import { getHttpEndpoint } from "@orbs-network/ton-access";
+import { TonClient, Address } from "ton";
+import { useEffect, useState } from "react";
+import { GetBalance } from "../../../web3/balance";
+
 
 const Container = styled.div`
     width: 85%;
@@ -59,12 +65,23 @@ const LinkContainer = styled.div`
 
 
 export const Balance = () => {
+    const userFriendlyAddress = useTonAddress();
+    const [ balance, setBalance ] = useState("")
+
+    useEffect(() => {
+        async function main() {
+            let tb = await GetBalance(userFriendlyAddress === undefined ? "" : userFriendlyAddress)
+            setBalance(tb)
+        }
+        main()
+    }, [])
+
     return (
         <Container>
             <div style={{ display: "flex", flexDirection: "column", width: "50%", gap: "10px" }}>
                 <Text>Your balance</Text>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <BalanceText>13654.23</BalanceText>
+                    <BalanceText>{(Number(balance) / 10**9).toFixed(0)}</BalanceText>
                     <BalanceLogo src={TonLinkLogo} />
                 </div>
                 <Text>0 $TL in delegations</Text>

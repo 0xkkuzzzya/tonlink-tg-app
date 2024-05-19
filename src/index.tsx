@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { BrowserRouter } from 'react-router-dom';
+window.Buffer = window.Buffer || require("buffer").Buffer; 
 
 
 const root = ReactDOM.createRoot(
