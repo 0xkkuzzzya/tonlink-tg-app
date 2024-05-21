@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import React from "react";
-import Active_Link from '../../../assets/Oracle-logo/ActiveLink.svg'
-import NonActive_Link from '../../../assets/Oracle-logo/NonActiveLink.svg'
+import Active_Link from '../../../assets/Oracle-logo/ActiveLink.webp'
+import NonActive_Link from '../../../assets/Oracle-logo/NonActiveLink.webp'
 import { Link } from "react-router-dom";
-import Ton from '../../../assets/Oracle-logo/ton.svg'
-import USDT from '../../../assets/Oracle-logo/usdt.svg'
-import BTC from '../../../assets/Oracle-logo/BTC.svg'
+import Ton from '../../../assets/Oracle-logo/ton.webp'
+import USDT from '../../../assets/Oracle-logo/usdt.webp'
+import BTC from '../../../assets/Oracle-logo/BTC.webp'
 
 
 const MainContainer = styled.div`

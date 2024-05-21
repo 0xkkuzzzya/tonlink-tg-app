@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import TonlinkLabsLogo from '../../../assets/Validators-logo/TonlinkLabsLlogo.svg'
+import TonlinkLabsLogo from '../../../assets/Validators-logo/TonlinkLabsLogo.webp'
 
 const Container = styled.div`
     width: 100%;
