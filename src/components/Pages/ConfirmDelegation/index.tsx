@@ -18,12 +18,14 @@ const ValidatorsLogo = styled.img`
 
 const HeaderName = styled.a`
     font-size: 18px;
+    font-weight: 500;
     color: #fff;
     margin: 20px 0px 10px 0px;
 `
 
 const HeaderDescription = styled.a`
     font-size: 12px;
+    font-weight: 500;
     color: #707579;
 `
 
@@ -31,17 +33,22 @@ const AmountField = styled.input`
     width: 90%;
     height: 30px;
     background: #1C1C1E;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    font-weight: 500;
+    border-radius: 7px;
+    font-weight: 600;
     margin: 10px 0px;
+    color: #fff;
+    padding-left: 10px;
 `
 
-const AmountText = styled.a`
-    font-size: 14px;
-    font-weight: 500;
+const ConfirmButton = styled.button`
+    width: 200px;
+    height: 40px;
     color: #fff;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: #027BFE;
 `
 
 
@@ -52,6 +59,7 @@ export const ConfirmDelegation = () => {
             <HeaderName>Delegation to Tonlink Labs</HeaderName>
             <HeaderDescription>Enter the amount to delegate $TL to the validator below</HeaderDescription>
             <AmountField placeholder="Amount"></AmountField>
+            <ConfirmButton>Confirm</ConfirmButton>
         </Container>
     )
 }
