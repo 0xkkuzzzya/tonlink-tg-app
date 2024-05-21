@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import "./App.css";
 
 const Container = styled.div`
-	background-color: var(--tg-theme-bg-color);
+	background-color: #000;
 	width: 100%;
 	height: 100vh;
 `

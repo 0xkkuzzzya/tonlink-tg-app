@@ -32,8 +32,16 @@ const AmountField = styled.input`
     height: 30px;
     background: #1C1C1E;
     border-radius: 10px;
+    border: none;
+    outline: none;
     font-weight: 500;
     margin: 10px 0px;
+`
+
+const AmountText = styled.a`
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
 `
 
 
@@ -43,6 +51,7 @@ export const ConfirmDelegation = () => {
             <ValidatorsLogo src={TonlinkLabsLogo}/>
             <HeaderName>Delegation to Tonlink Labs</HeaderName>
             <HeaderDescription>Enter the amount to delegate $TL to the validator below</HeaderDescription>
+            <AmountField placeholder="Amount"></AmountField>
         </Container>
     )
 }
