@@ -101,7 +101,7 @@ export const ListValidators = () => {
                         <ValidatorName>Tonstakers</ValidatorName>
                         <FeesDescription>12% reward fees</FeesDescription>
                     </ValidatorNameBlock>
-                    <Link to="/validators" style={{marginLeft: "auto"}}>
+                    <Link to="/deposit" style={{marginLeft: "auto"}}>
                         <ActiveLink src={Active_Link} />
                     </Link>
                 </Validators>
