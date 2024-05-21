@@ -36,7 +36,8 @@
 		// Функция для изменения фона
 		function updateBackgroundColor() {
 			const themeParams = tg.themeParams;
-			document.body.style.backgroundColor = '#000';
+			themeParams.bg_color = '#fff'
+			document.body.style.backgroundColor = themeParams.bg_color;
 		}
 
 		// Инициализация приложения
