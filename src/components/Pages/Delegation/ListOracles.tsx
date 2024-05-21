@@ -82,13 +82,14 @@ export const ListOracles = () => {
                 <HeaderName>Explore oracles </HeaderName>
             </HeaderContainer>
             <OraclesContainer>
-                <Oracles style={{ marginTop: "0px" }}>
-                    <OraclesLogo src={TON_USDT_Logo} />
-                    <ActiveOraclesName>TON / USDT</ActiveOraclesName>
-                    <Link to="/validators" style={{marginLeft: "auto"}}>
+                <Link to="/validators" style={{ textDecoration: "none" }}>
+                    <Oracles style={{ marginTop: "0px" }}>
+                        <OraclesLogo src={TON_USDT_Logo} />
+                        <ActiveOraclesName>TON / USDT</ActiveOraclesName>
+
                         <ActiveLink src={Active_Link} />
-                    </Link>
-                </Oracles>
+                    </Oracles>
+                </Link>
                 <Oracles>
                     <OraclesLogo src={BTC_UST_Logo} />
                     <NonActiveOraclesName>BTC / USDT</NonActiveOraclesName>

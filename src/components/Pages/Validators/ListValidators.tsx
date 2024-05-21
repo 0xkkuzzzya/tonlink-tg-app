@@ -85,25 +85,25 @@ export const ListValidators = () => {
                 <HeaderName>Explore validators</HeaderName>
             </HeaderContainer>
             <ValidatorsContainer>
-                <Validators>
-                    <ValidatorsLogo src={Tonlink_labs_Logo} />
-                    <ValidatorNameBlock>
-                        <ValidatorName>Tonlink Labs</ValidatorName>
-                        <FeesDescription>18% reward fees</FeesDescription>
-                    </ValidatorNameBlock>
-                    <Link to="/validators" style={{marginLeft: "auto"}}>
-                        <ActiveLink src={Active_Link} />
-                    </Link>
-                </Validators>
+                <Link to="/confirmDelegation" style={{ textDecoration: "none" }}>
+                    <Validators>
+                        <ValidatorsLogo src={Tonlink_labs_Logo} />
+                        <ValidatorNameBlock>
+                            <ValidatorName>Tonlink Labs</ValidatorName>
+                            <FeesDescription>18% reward fees</FeesDescription>
+                        </ValidatorNameBlock>
+                        <Link to="/validators" style={{ marginLeft: "auto" }}>
+                            <ActiveLink src={Active_Link} />
+                        </Link>
+                    </Validators>
+                </Link>
                 <Validators>
                     <ValidatorsLogo src={Tonstakers_Logo} />
                     <ValidatorNameBlock>
                         <ValidatorName>Tonstakers</ValidatorName>
                         <FeesDescription>12% reward fees</FeesDescription>
                     </ValidatorNameBlock>
-                    <Link to="/deposit" style={{marginLeft: "auto"}}>
-                        <ActiveLink src={Active_Link} />
-                    </Link>
+                    <ActiveLink src={Active_Link} />
                 </Validators>
             </ValidatorsContainer>
         </Container>
