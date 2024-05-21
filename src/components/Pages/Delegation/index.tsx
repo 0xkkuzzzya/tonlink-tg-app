@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import NonActive_Link from '../../../assets/Oracle-logo/Non-active-link.svg'
+import Non_Active_Link from '../../../assets/Oracle-logo/Non-active-link.svg'
 import { ListOracles } from "./ListOracles";
 
 
@@ -82,7 +82,7 @@ export const DelegationPage = () => {
                         <LinkName>My delegation</LinkName>
                         <LinkDescription>Explore your delegations</LinkDescription>
                     </Column>
-                    <ActiveLink src={NonActive_Link} />
+                    <ActiveLink src={Non_Active_Link} />
                 </Row>
             </MyDeligationContainer>
             <ListOracles />
