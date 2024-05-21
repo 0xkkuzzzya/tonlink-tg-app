@@ -30,25 +30,6 @@
 		}
 	</style>
 	<div id="root"></div>
-	<script>
-		const tg = window.Telegram.WebApp;
-
-		// Функция для изменения фона
-		function updateBackgroundColor() {
-			const themeParams = tg.themeParams;
-			themeParams.bg_color = '#fff'
-			document.body.style.backgroundColor = themeParams.bg_color;
-		}
-
-		// Инициализация приложения
-		tg.ready();
-
-		// Изменение фона при запуске
-		updateBackgroundColor();
-
-		// Изменение фона при смене темы
-		tg.onEvent('themeChanged', updateBackgroundColor);
-	</script>
 </body>
 
 </html>
