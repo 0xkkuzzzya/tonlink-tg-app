@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 import TonLinkLogo from '../../assets/TonLink.webp'
 import { TonConnectButton } from "@tonconnect/ui-react";
 

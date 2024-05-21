@@ -1,12 +1,11 @@
 import React from 'react';
 import { MainIndex } from './components';
 import styled from 'styled-components';
-import mainbg from './assets/main-bg.jpg'
 
 const Container = styled.div`
 	background: #000;
 	padding-bottom: 23px;
-	height: 100%;
+	height: 100vh;
 `
 
 

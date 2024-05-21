@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import React from "react";
 import { Routes, Route } from 'react-router-dom';
-import { Header } from "./Header/Header";
 import { MainPage } from "./Pages/Main";
+import { DelegationPage } from "./Pages/Delegation";
 
 
 const Container = styled.div`
@@ -21,10 +22,10 @@ const PageContainer = styled.div`
 export const MainIndex = () => {
     return (
         <Container>
-            <Header />
             <PageContainer>
                 <Routes>
                     <Route path="/" element={<MainPage />} />
+                    <Route path="/delegation" element={<DelegationPage />} />
                 </Routes>
             </PageContainer>
         </Container>

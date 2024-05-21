@@ -1,17 +1,19 @@
 import styled from "styled-components";
+import React from "react";
 import TonLinkLogo from '../../../assets/TonLink.webp'
-import LinkToDeposit from '../../../assets/Link-to-deposit.webp'
-import LinkToSend from '../../../assets/Link-to-send-token.webp'
+import LinkToDeposit from '../../../assets/Link-logo/Link-to-deposit.webp'
+import LinkToSend from '../../../assets/Link-logo/Link-to-send-token.webp'
 import { useTonAddress } from "@tonconnect/ui-react";
 import { useEffect, useState } from "react";
 import { GetBalance } from "../../../web3/balance";
 
 
 const Container = styled.div`
-    width: 85%;
+    width: 90%;
+    height: 135px;
     display: flex;
+    align-items: center;
     background: #1C1C1E;
-    padding: 12px 15px;
     border-radius: 15px;
 `
 
@@ -21,6 +23,14 @@ const Text = styled.a`
     color: #707579;
     margin-left: 10px;
     white-space: nowrap;
+`
+
+const BlanaceContainer = styled.div`
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 20px;
 `
 
 const BalanceText = styled.a`
@@ -57,14 +67,15 @@ const LinkContainer = styled.div`
     width: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 20px;
+    margin-right: 20px;
 `
 
 
 export const Balance = () => {
     const userFriendlyAddress = useTonAddress();
-    const [ balance, setBalance ] = useState("")
+    const [balance, setBalance] = useState("")
 
     useEffect(() => {
         async function main() {
@@ -76,17 +87,17 @@ export const Balance = () => {
 
     return (
         <Container>
-            <div style={{ display: "flex", flexDirection: "column", width: "50%", gap: "10px" }}>
+            <BlanaceContainer>
                 <Text>Your balance</Text>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <BalanceText>{(Number(balance) / 10**9).toFixed(0)}</BalanceText>
+                    <BalanceText>{(Number(balance) / 10 ** 9).toFixed(0)}</BalanceText>
                     <BalanceLogo src={TonLinkLogo} />
                 </div>
                 <Text>0 $TL in delegations</Text>
                 <Text>0 $TL in subscriptions</Text>
-            </div>
+            </BlanaceContainer>
             <LinkContainer>
-                <LinkButton style={{marginLeft: "25px"}}>
+                <LinkButton>
                     <LinkImg src={LinkToSend} />
                 </LinkButton>
                 <LinkButton>

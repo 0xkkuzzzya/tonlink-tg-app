@@ -1,36 +1,61 @@
 import styled from "styled-components";
-import LinkToDelegate from '../../../assets/Link-to-delegate.webp'
-import LinkToSubscription from '../../../assets/Link-to-subscription.webp'
-import LinkToOficialSite from '../../../assets/Link-to-officalsite.webp'
-import LinkToTelegram from '../../../assets/Link-to-telegram.webp'
+import React from "react";
+import LinkToDelegate from '../../../assets/Link-logo/Link-to-delegate.webp'
+import LinkToSubscription from '../../../assets/Link-logo/Link-to-subscription.webp'
+import LinkToOficialSite from '../../../assets/Link-logo/Link-to-officalsite.webp'
+import LinkToTelegram from '../../../assets/Link-logo/Link-to-telegram.webp'
+import { Link } from "react-router-dom";
+
 
 const Container = styled.div`
     width: 100%;
+    height: 75px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background: #1C1C1E;
-    padding: 12px 15px;
     border-radius: 15px;
     margin-top: 20px;
+`
+
+const Container1 = styled.div`
+    width: 100%;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #1C1C1E;
+    border-radius: 15px;
+    margin-top: 20px;
+`
+
+const MainContainer = styled.div`
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 const Column = styled.div`
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 `
 
-const Container1 = styled.div`
-    width: 100%;
+const Column1 = styled.div`
     display: flex;
     flex-direction: column;
-    background: #1C1C1E;
-    padding: 15px;
-    border-radius: 15px;
-    margin-top: 20px;
 `
 
 const LinkName = styled.a`
     font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+`
+
+const LinkName1 = styled.a`
+    font-size: 16px;
     font-weight: 600;
     color: #fff;
     white-space: nowrap;
@@ -43,7 +68,15 @@ const Description = styled.a`
     color: #707579;
     margin-top: 10px;
     white-space: nowrap;
+`
+
+const Description1 = styled.a`
+    font-size: 11px;
+    font-weight: 600;
+    color: #707579;
+    margin-top: 5px;
     margin-left: 10px;
+    white-space: nowrap;
 `
 
 const LinkButton = styled.div`
@@ -54,7 +87,7 @@ const LinkButton = styled.div`
     align-items: center;
     background: #26252B;
     border-radius: 10px;
-    margin-right: 10px;
+    margin-right: 20px;
 `
 
 const LinkImg = styled.img`
@@ -63,9 +96,8 @@ const LinkImg = styled.img`
 `
 
 const LinkButtonLong = styled.div`
-    width: 87.5%;
+    width: 88%;
     height: 50px;
-    padding: 5px 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -75,49 +107,59 @@ const LinkButtonLong = styled.div`
     margin-top: 10px;
 `
 
+const LinkContainer = styled(Link)`
+    width: 100%;
+    text-decoration: none;
+`
+
+
 
 export const Links = () => {
     return (
-        <div style={{ display: "flex", flexDirection: "column", width: "85%", alignItems: "center" }}>
-            <Container>
-                <Column>
-                    <LinkName>Delegation</LinkName>
-                    <Description>Delegate $TL and earn rewards</Description>
-                </Column>
-                <LinkButton>
-                    <LinkImg src={LinkToDelegate} />
-                </LinkButton>
-            </Container>
-            <Container>
-                <Column>
-                    <LinkName>Subscription</LinkName>
-                    <Description>Manage your subscriptions</Description>
-                </Column>
-                <LinkButton>
-                    <LinkImg src={LinkToSubscription} />
-                </LinkButton>
-            </Container>
+        <MainContainer>
+            <LinkContainer to="/delegation">
+                <Container>
+                    <Column>
+                        <LinkName>Delegation</LinkName>
+                        <Description>Delegate $TL anаd earn rewards</Description>
+                    </Column>
+                    <LinkButton>
+                        <LinkImg src={LinkToDelegate} />
+                    </LinkButton>
+                </Container>
+            </LinkContainer>
+            <LinkContainer to="/subscriprion" >
+                <Container>
+                    <Column>
+                        <LinkName>Subscription</LinkName>
+                        <Description>Manage your subscriptions</Description>
+                    </Column>
+                    <LinkButton>
+                        <LinkImg src={LinkToSubscription} />
+                    </LinkButton>
+                </Container>
+            </LinkContainer>
             <Container1>
-                <LinkName>Explore ecosystem </LinkName>
+                <LinkName style={{marginLeft: "20px"}}>Explore ecosystem </LinkName>
                 <a href="https://tonlink.network" target="_blank" style={{ textDecoration: "none" }}>
                     <LinkButtonLong>
-                        <Column>
-                            <LinkName style={{ fontSize: "16px" }}>Official site</LinkName>
-                            <Description style={{ fontSize: "11px", marginTop: "5px" }}>Explore official website and documentation</Description>
-                        </Column>
-                        <LinkImg style={{ marginRight: "4px" }} src={LinkToOficialSite} />
+                        <Column1>
+                            <LinkName1>Official site</LinkName1>
+                            <Description1>Explore official website and documentation</Description1>
+                        </Column1>
+                        <LinkImg style={{ marginRight: "12px" }} src={LinkToOficialSite} />
                     </LinkButtonLong>
                 </a>
                 <a href="https://t.me/tonlink_en" target="_blank" style={{ textDecoration: "none", marginTop: "15px" }}>
                     <LinkButtonLong style={{ marginTop: "0px" }}>
-                        <Column>
-                            <LinkName style={{ fontSize: "16px" }}>Telegram Сhannel</LinkName>
-                            <Description style={{ fontSize: "11px", marginTop: "5px" }}>Explore official telegram channel</Description>
-                        </Column>
-                        <LinkImg style={{ marginRight: "4px" }} src={LinkToTelegram} />
+                        <Column1>
+                            <LinkName1>Telegram Сhannel</LinkName1>
+                            <Description1>Explore official telegram channel</Description1>
+                        </Column1>
+                        <LinkImg style={{ marginRight: "12px" }} src={LinkToTelegram} />
                     </LinkButtonLong>
                 </a>
             </Container1>
-        </div>
+        </MainContainer>
     )
 }
