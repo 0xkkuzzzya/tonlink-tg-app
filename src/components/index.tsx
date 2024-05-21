@@ -3,6 +3,7 @@ import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import { MainPage } from "./Pages/Main";
 import { DelegationPage } from "./Pages/Delegation";
+import { ValidatorsPage } from "./Pages/Validators";
 
 
 const Container = styled.div`
@@ -26,6 +27,7 @@ export const MainIndex = () => {
                 <Routes>
                     <Route path="/" element={<MainPage />} />
                     <Route path="/delegation" element={<DelegationPage />} />
+                    <Route path="/validators" element={<ValidatorsPage />} />
                 </Routes>
             </PageContainer>
         </Container>

@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import React from "react";
-import TON_USDT_Logo from '../../../assets/oracle-logo/TON-USDT-oracle.svg'
-import BTC_UST_Logo from '../../../assets/oracle-logo/BTC-USDT-oracle.svg'
-import Active_Link from '../../../assets/oracle-logo/Active-link.svg'
-import NonActive_Link from '../../../assets/oracle-logo/Non-active-link.svg'
+import TON_USDT_Logo from '../../../assets/Oracle-logo/TON-USDT-oracle.svg'
+import BTC_UST_Logo from '../../../assets/Oracle-logo/BTC-USDT-oracle.svg'
+import Active_Link from '../../../assets/Oracle-logo/Active-link.svg'
+import NonActive_Link from '../../../assets/Oracle-logo/Non-active-link.svg'
+import { Link } from "react-router-dom";
 
 
 const MainContainer = styled.div`
@@ -24,7 +25,7 @@ const HeaderContainer = styled.div`
     align-items: center;
 `
 
-const Name = styled.a`
+const HeaderName = styled.a`
     font-size: 18px;
     font-weight: 500;
     color: #fff;
@@ -55,7 +56,6 @@ const OraclesLogo = styled.img`
 
 const ActiveOraclesName = styled.a`
     font-size: 18px;
-    font-weight: 500;
     color: #fff;
     margin-left: 10px;
 `
@@ -79,18 +79,20 @@ export const ListOracles = () => {
     return (
         <MainContainer>
             <HeaderContainer>
-                <Name>Explore oracles </Name>
+                <HeaderName>Explore oracles </HeaderName>
             </HeaderContainer>
             <OraclesContainer>
-                <Oracles style={{marginTop: "0px"}}>
-                    <OraclesLogo src={TON_USDT_Logo}/>
+                <Oracles style={{ marginTop: "0px" }}>
+                    <OraclesLogo src={TON_USDT_Logo} />
                     <ActiveOraclesName>TON / USDT</ActiveOraclesName>
-                    <ActiveLink src={Active_Link}/>
+                    <Link to="/validators" style={{marginLeft: "auto"}}>
+                        <ActiveLink src={Active_Link} />
+                    </Link>
                 </Oracles>
                 <Oracles>
-                    <OraclesLogo src={BTC_UST_Logo}/>
+                    <OraclesLogo src={BTC_UST_Logo} />
                     <NonActiveOraclesName>BTC / USDT</NonActiveOraclesName>
-                    <ActiveLink src={NonActive_Link}/>
+                    <ActiveLink src={NonActive_Link} />
                 </Oracles>
             </OraclesContainer>
         </MainContainer>

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 	background: #000;
-	padding-bottom: 23px;
 	height: 100vh;
 `
 
