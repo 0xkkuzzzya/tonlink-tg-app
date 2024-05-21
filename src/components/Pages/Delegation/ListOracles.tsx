@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import React from "react";
-import TON_USDT_Logo from '../../../assets/Oracle-logo/TON_USDT_oracle.svg'
-import BTC_UST_Logo from '../../../assets/Oracle-logo/BTC_USDT_oracle.svg'
 import Active_Link from '../../../assets/Oracle-logo/ActiveLink.svg'
 import NonActive_Link from '../../../assets/Oracle-logo/NonActiveLink.svg'
 import { Link } from "react-router-dom";
+import Ton from '../../../assets/Oracle-logo/ton.svg'
+import USDT from '../../../assets/Oracle-logo/usdt.svg'
+import BTC from '../../../assets/Oracle-logo/BTC.svg'
 
 
 const MainContainer = styled.div`
@@ -74,6 +75,11 @@ const NonActiveOraclesName = styled.a`
     margin-left: 10px;
 `
 
+const Logo = styled.img`
+    width: 30px;
+    height: 30px;
+`
+
 
 export const ListOracles = () => {
     return (
@@ -84,15 +90,20 @@ export const ListOracles = () => {
             <OraclesContainer>
                 <Link to="/validators" style={{ textDecoration: "none" }}>
                     <Oracles style={{ marginTop: "0px" }}>
-                        <OraclesLogo src={TON_USDT_Logo} />
-                        <ActiveOraclesName>TON / USDT</ActiveOraclesName>
-
+                        <div style={{ marginLeft: "40px" }}>
+                            <Logo src={USDT} />
+                            <Logo src={Ton} style={{ marginLeft: "-50px" }} />
+                        </div>
+                        <ActiveOraclesName style={{ marginLeft: "30px" }}>TON / USDT</ActiveOraclesName>
                         <ActiveLink src={Active_Link} />
                     </Oracles>
                 </Link>
                 <Oracles>
-                    <OraclesLogo src={BTC_UST_Logo} />
-                    <NonActiveOraclesName>BTC / USDT</NonActiveOraclesName>
+                    <div style={{ marginLeft: "40px" }}>
+                        <Logo src={USDT} />
+                        <Logo src={BTC} style={{ marginLeft: "-50px" }} />
+                    </div>
+                    <ActiveOraclesName style={{ marginLeft: "30px" }}>BTC / USDT</ActiveOraclesName>
                     <ActiveLink src={NonActive_Link} />
                 </Oracles>
             </OraclesContainer>
