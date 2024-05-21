@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Tonlink_labs_Logo from '../../../assets/Validators-logo/Tonlink-labs-logo.svg'
-import Tonstakers_Logo from '../../../assets/Validators-logo/Tonstakers-logo.svg'
-import Active_Link from '../../../assets/Oracle-logo/Active-link.svg'
+import Tonlink_labs_Logo from '../../../assets/Validators-logo/TonlinkLabsLlogo.svg'
+import Tonstakers_Logo from '../../../assets/Validators-logo/TonstakersLogo.svg'
+import Active_Link from '../../../assets/Oracle-logo/ActiveLink.svg'
 import { Link } from "react-router-dom";
 
 const Container = styled.div`

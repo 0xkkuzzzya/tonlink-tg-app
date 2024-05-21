@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import Non_Active_Link from '../../../assets/Oracle-logo/Non-active-link.svg'
+import Non_Active_Link from '../../../assets/Oracle-logo/NonActiveLink.svg'
 import { ListOracles } from "./ListOracles";
 
 

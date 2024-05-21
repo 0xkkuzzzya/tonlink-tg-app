@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import React from "react";
-import TON_USDT_Logo from '../../../assets/Oracle-logo/TON-USDT-oracle.svg'
-import BTC_UST_Logo from '../../../assets/Oracle-logo/BTC-USDT-oracle.svg'
-import Active_Link from '../../../assets/Oracle-logo/Active-link.svg'
-import NonActive_Link from '../../../assets/Oracle-logo/Non-active-link.svg'
+import TON_USDT_Logo from '../../../assets/Oracle-logo/TON_USDT_oracle.svg'
+import BTC_UST_Logo from '../../../assets/Oracle-logo/BTC_USDT_oracle.svg'
+import Active_Link from '../../../assets/Oracle-logo/ActiveLink.svg'
+import NonActive_Link from '../../../assets/Oracle-logo/NonActiveLink.svg'
 import { Link } from "react-router-dom";
 
 
