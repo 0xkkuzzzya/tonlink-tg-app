@@ -66,7 +66,7 @@ export const ConfirmDelegation = () => {
         <Container>
             <ValidatorsLogo src={TonlinkLabsLogo}/>
             <HeaderName>Delegation to Tonlink Labs</HeaderName>
-            <HeaderDescription>Enter the amount to delegate $TL to the validator below</HeaderDescription>
+            <HeaderDescription>Enter the amount to delegate $TL to the validator</HeaderDescription>
             <AmountField placeholder="Amount"></AmountField>
             <ConfirmButton>Confirm</ConfirmButton>
         </Container>

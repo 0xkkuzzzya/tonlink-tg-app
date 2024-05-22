@@ -86,7 +86,7 @@ export const ListValidators = () => {
             </HeaderContainer>
             <ValidatorsContainer>
                 <Link to="/confirmDelegation" style={{ textDecoration: "none" }}>
-                    <Validators>
+                    <Validators style={{marginTop: "0px"}}>
                         <ValidatorsLogo src={Tonlink_labs_Logo} />
                         <ValidatorNameBlock>
                             <ValidatorName>Tonlink Labs</ValidatorName>
