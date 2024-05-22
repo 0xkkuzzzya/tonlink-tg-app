@@ -11,6 +11,14 @@ const Container = styled.div`
 
 
 function App() {
+
+	useEffect(() => {
+		let tg = window.Telegram.WebApp;
+		tg.expand();
+		window.Telegram.WebApp.setHeaderColor("#000")
+		window.Telegram.WebApp.BackButton.show()
+	}, [])
+
 	return (
 		<Container>
 			<MainIndex />
