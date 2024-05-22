@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useEffect } from 'react';
 import { Balance } from "./Balance";
 import { Links } from "./Links";
 import { Header } from "../../Header/Header";
@@ -14,6 +14,11 @@ const Container = styled.div`
 
 
 export const MainPage = () => {
+
+    useEffect(() => {
+		window.Telegram.WebApp.BackButton.hide()
+	}, [])
+
     return(
         <Container>
             <Header />
