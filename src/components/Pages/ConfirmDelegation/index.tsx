@@ -17,7 +17,7 @@ const ValidatorsLogo = styled.img`
 `
 
 const HeaderName = styled.a`
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     color: #fff;
     margin: 20px 0px 10px 0px;
@@ -31,7 +31,7 @@ const HeaderDescription = styled.a`
 
 const AmountField = styled.input`
     width: 90%;
-    height: 30px;
+    height: 35px;
     background: #1C1C1E;
     border-radius: 7px;
     font-weight: 600;

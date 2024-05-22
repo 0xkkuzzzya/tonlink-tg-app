@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MainIndex } from './components';
 import styled from 'styled-components';
 import "./App.css";
@@ -13,7 +13,7 @@ const Container = styled.div`
 function App() {
 	return (
 		<Container>
-			<MainIndex/>
+			<MainIndex />
 		</Container>
 	);
 }
