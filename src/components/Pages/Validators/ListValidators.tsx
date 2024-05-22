@@ -27,7 +27,7 @@ const HeaderName = styled.a`
     font-size: 18px;
     font-weight: 500;
     color: #fff;
-    margin-left: 30px;
+    margin-left: 20px;
 `
 
 const ValidatorsContainer = styled.div`

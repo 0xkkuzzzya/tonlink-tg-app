@@ -13,26 +13,26 @@ const Container = styled.div`
 `
 
 const ValidatorsLogo = styled.img`
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
 `
 
 const HeaderName = styled.a`
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
     color: #fff;
     margin: 20px 0px 10px 0px;
 `
 
 const HeaderDescription = styled.a`
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     color: #707579;
 `
 
 const AmountField = styled.input`
     width: 90%;
-    height: 35px;
+    height: 38px;
     background: #1C1C1E;
     border-radius: 7px;
     font-weight: 600;
