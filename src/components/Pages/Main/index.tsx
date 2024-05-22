@@ -7,9 +7,14 @@ import { Header } from "../../Header/Header";
 
 const Container = styled.div`
     width: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
+    @media (max-height: 590px) {
+		height: 100%;
+		margin-bottom: 20px;
+	}
 `
 
 
