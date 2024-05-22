@@ -32,7 +32,7 @@ export const ValidatorsPage = () => {
 
     useEffect(() => {
 		window.Telegram.WebApp.BackButton.show()
-        window.Telegram.WebApp.BackButton.onClick(() => navigate(1))
+        window.Telegram.WebApp.BackButton.onClick(() => navigate(-1))
 	}, [])
 
     return(
