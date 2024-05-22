@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useEffect } from 'react';
 import Non_Active_Link from '../../../assets/Oracle-logo/NonActiveLink.webp'
 import { ListOracles } from "./ListOracles";
+import { useNavigate } from "react-router";
 
 
 const Container = styled.div`
@@ -72,6 +73,14 @@ const ActiveLink = styled.img`
 
 
 export const DelegationPage = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+		window.Telegram.WebApp.BackButton.show()
+        window.Telegram.WebApp.BackButton.onClick(() => navigate(-1))
+	}, [])
+
     return (
         <Container>
             <HeaderText>Manage delegation</HeaderText>

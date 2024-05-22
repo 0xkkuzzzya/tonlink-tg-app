@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import styled from "styled-components";
 import { ListValidators } from "./ListValidators";
+import { useNavigate } from "react-router";
 
 const Container = styled.div`
     width: 100%;
@@ -26,6 +27,14 @@ const HeaderDescription = styled.a`
 
 
 export const ValidatorsPage = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+		window.Telegram.WebApp.BackButton.show()
+        window.Telegram.WebApp.BackButton.onClick(() => navigate(-1))
+	}, [])
+
     return(
         <Container>
             <HeaderText>Validators for oracle</HeaderText>

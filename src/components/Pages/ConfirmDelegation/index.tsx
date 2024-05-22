@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useEffect } from 'react';
 import TonlinkLabsLogo from '../../../assets/Validators-logo/TonlinkLabsLogo.webp'
+import { useNavigate } from "react-router";
 
 const Container = styled.div`
     width: 100%;
@@ -53,6 +54,14 @@ const ConfirmButton = styled.button`
 
 
 export const ConfirmDelegation = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+		window.Telegram.WebApp.BackButton.show()
+        window.Telegram.WebApp.BackButton.onClick(() => navigate(-1))
+	}, [])
+
     return(
         <Container>
             <ValidatorsLogo src={TonlinkLabsLogo}/>
