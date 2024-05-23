@@ -86,15 +86,13 @@ export const ListValidators = () => {
             </HeaderContainer>
             <ValidatorsContainer>
                 <Link to="/confirmDelegation" style={{ textDecoration: "none" }}>
-                    <Validators style={{marginTop: "0px"}}>
+                    <Validators style={{ marginTop: "0px" }}>
                         <ValidatorsLogo src={Tonlink_labs_Logo} />
                         <ValidatorNameBlock>
                             <ValidatorName>Tonlink Labs</ValidatorName>
                             <FeesDescription>18% reward fees</FeesDescription>
                         </ValidatorNameBlock>
-                        <Link to="/validators" style={{ marginLeft: "auto" }}>
-                            <ActiveLink src={Active_Link} />
-                        </Link>
+                        <ActiveLink src={Active_Link} />
                     </Validators>
                 </Link>
                 <Validators>
