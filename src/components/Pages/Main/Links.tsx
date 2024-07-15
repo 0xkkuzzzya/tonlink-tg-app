@@ -20,7 +20,7 @@ const Container = styled.div`
 
 const Container1 = styled.div`
     width: 100%;
-    height: 190px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,7 +97,7 @@ const LinkImg = styled.img`
 
 const LinkButtonLong = styled.div`
     width: 88%;
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -128,7 +128,7 @@ export const Links = () => {
                     </LinkButton>
                 </Container>
             </LinkContainer>
-            <LinkContainer to="/subscriprion" >
+            {/* <LinkContainer to="/subscriprion" >
                 <Container>
                     <Column>
                         <LinkName>Subscription</LinkName>
@@ -138,7 +138,7 @@ export const Links = () => {
                         <LinkImg src={LinkToSubscription} />
                     </LinkButton>
                 </Container>
-            </LinkContainer>
+            </LinkContainer> */}
             <Container1>
                 <LinkName style={{marginLeft: "20px"}}>Explore ecosystem </LinkName>
                 <a href="https://tonlink.network" target="_blank" style={{ textDecoration: "none" }}>

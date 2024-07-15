@@ -10,7 +10,7 @@ import { GetBalance } from "../../../web3/balance";
 
 const Container = styled.div`
     width: 90%;
-    height: 135px;
+    height: 100px;
     display: flex;
     align-items: center;
     background: #1C1C1E;
@@ -94,16 +94,15 @@ export const Balance = () => {
                     <BalanceLogo src={TonLinkLogo} />
                 </div>
                 <Text>0 $TL in delegations</Text>
-                <Text>0 $TL in subscriptions</Text>
             </BlanaceContainer>
-            <LinkContainer>
+            {/* <LinkContainer>
                 <LinkButton>
                     <LinkImg src={LinkToSend} />
                 </LinkButton>
                 <LinkButton>
                     <LinkImg src={LinkToDeposit} />
                 </LinkButton>
-            </LinkContainer>
+            </LinkContainer> */}
         </Container>
     )
 }

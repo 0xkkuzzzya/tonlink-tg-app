@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Non_Active_Link from '../../../assets/Oracle-logo/NonActiveLink.webp'
 import { ListOracles } from "./ListOracles";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -77,23 +78,25 @@ export const DelegationPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-		window.Telegram.WebApp.BackButton.show()
+        window.Telegram.WebApp.BackButton.show()
         window.Telegram.WebApp.BackButton.onClick(() => navigate(-1))
-	}, [])
+    }, [])
 
     return (
         <Container>
             <HeaderText>Manage delegation</HeaderText>
             <HeaderDescription>Delegate the $TL token or manage your delegations. </HeaderDescription>
-            <MyDeligationContainer>
+            {/* <MyDeligationContainer>
                 <Row>
-                    <Column>
-                        <LinkName>My delegation</LinkName>
-                        <LinkDescription>Explore your delegations</LinkDescription>
-                    </Column>
+                    <Link to="/mydelegation" style={{ textDecoration: "none" }}>
+                        <Column>
+                            <LinkName>My delegation</LinkName>
+                            <LinkDescription>Explore your delegations</LinkDescription>
+                        </Column>
+                    </Link>
                     <ActiveLink src={Non_Active_Link} />
                 </Row>
-            </MyDeligationContainer>
+            </MyDeligationContainer> */}
             <ListOracles />
         </Container>
     )

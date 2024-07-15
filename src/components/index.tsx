@@ -5,6 +5,7 @@ import { MainPage } from "./Pages/Main";
 import { DelegationPage } from "./Pages/Delegation";
 import { ValidatorsPage } from "./Pages/Validators";
 import { ConfirmDelegation } from "./Pages/ConfirmDelegation";
+import { MyDelegation } from "./Pages/MyDelegation";
 
 
 const Container = styled.div`
@@ -18,6 +19,7 @@ const Container = styled.div`
 const PageContainer = styled.div`
     width: 100%;
     display: flex;
+    justify-content: center;
 `
 
 
@@ -29,6 +31,7 @@ export const MainIndex = () => {
                     <Route path="/" element={<MainPage />} />
                     <Route path="/delegation" element={<DelegationPage />} />
                     <Route path="/validators" element={<ValidatorsPage />} />
+                    <Route path="/mydelegation" element={<MyDelegation />} />
                     <Route path="/confirmDelegation" element={<ConfirmDelegation />} />
                 </Routes>
             </PageContainer>
