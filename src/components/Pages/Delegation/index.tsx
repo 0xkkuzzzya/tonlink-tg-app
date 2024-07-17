@@ -14,11 +14,19 @@ const Container = styled.div`
     align-items: center;
 `
 
+const HeaderContainer = styled.div`
+    width: 90%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+`
+
 const HeaderText = styled.a`
     color: white;
     font-size: 20px;
     font-weight: 500;
-    margin-top: 20px;
 `
 
 const HeaderDescription = styled.a`
@@ -84,19 +92,10 @@ export const DelegationPage = () => {
 
     return (
         <Container>
-            <HeaderText>Manage delegation</HeaderText>
-            <HeaderDescription>Delegate the $TL token or manage your delegations. </HeaderDescription>
-            {/* <MyDeligationContainer>
-                <Row>
-                    <Link to="/mydelegation" style={{ textDecoration: "none" }}>
-                        <Column>
-                            <LinkName>My delegation</LinkName>
-                            <LinkDescription>Explore your delegations</LinkDescription>
-                        </Column>
-                    </Link>
-                    <ActiveLink src={Non_Active_Link} />
-                </Row>
-            </MyDeligationContainer> */}
+            <HeaderContainer>
+                <HeaderText>Manage delegation</HeaderText>
+                <HeaderDescription>Delegate the $TL token or manage your delegations. </HeaderDescription>
+            </HeaderContainer>
             <ListOracles />
         </Container>
     )
