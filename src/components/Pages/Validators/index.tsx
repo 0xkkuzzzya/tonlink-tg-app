@@ -7,7 +7,7 @@ import { ValidatorPageBlocks } from './Blocks';
 
 const MainContainer = styled.div`
     width: 85%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
