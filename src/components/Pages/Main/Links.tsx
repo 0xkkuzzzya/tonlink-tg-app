@@ -121,7 +121,7 @@ export const Links = () => {
                 <Container>
                     <Column>
                         <LinkName>Delegation</LinkName>
-                        <Description>Delegate $TL and earn rewards</Description>
+                        <Description>Delegate stTON and earn rewards</Description>
                     </Column>
                     <LinkButton>
                         <LinkImg src={LinkToDelegate} />

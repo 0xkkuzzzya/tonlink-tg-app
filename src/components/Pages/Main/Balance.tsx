@@ -1,8 +1,5 @@
 import styled from "styled-components";
 import React from "react";
-import TonLinkLogo from '../../../assets/TonLink.webp'
-import LinkToDeposit from '../../../assets/Link-logo/Link-to-deposit.webp'
-import LinkToSend from '../../../assets/Link-logo/Link-to-send-token.webp'
 import { useTonAddress } from "@tonconnect/ui-react";
 import { useEffect, useState } from "react";
 import { GetBalance } from "../../../web3/balance";
@@ -10,7 +7,7 @@ import { GetBalance } from "../../../web3/balance";
 
 const Container = styled.div`
     width: 90%;
-    height: 100px;
+    height: 135px;
     display: flex;
     align-items: center;
     background: #1C1C1E;
@@ -90,19 +87,12 @@ export const Balance = () => {
             <BlanaceContainer>
                 <Text>Your balance</Text>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <BalanceText>{(Number(balance) / 10 ** 9).toFixed(0)}</BalanceText>
-                    <BalanceLogo src={TonLinkLogo} />
+                    <BalanceText>{(Number(balance) / 10 ** 9).toFixed(0)} stTON</BalanceText>
+                    
                 </div>
-                <Text>0 $TL in delegations</Text>
+                <Text>0 stTON in delegations</Text>
+                <Text>0 $TL in reward</Text>
             </BlanaceContainer>
-            {/* <LinkContainer>
-                <LinkButton>
-                    <LinkImg src={LinkToSend} />
-                </LinkButton>
-                <LinkButton>
-                    <LinkImg src={LinkToDeposit} />
-                </LinkButton>
-            </LinkContainer> */}
         </Container>
     )
 }

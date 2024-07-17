@@ -74,7 +74,7 @@ const MAXButton = styled.div`
 
 const MAXButtonText = styled.a`
     color: #fff;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 500;
 `
 
@@ -142,7 +142,7 @@ const DelegateBlock = () => {
         <>
             <Description>Enter the number of stTONs you want to delegate</Description>
             <InputContainer>
-                <Input placeholder="0"></Input>
+                <Input inputMode='decimal' type="text" placeholder="0"></Input>
                 <AmountContainer>
                     <AmountText>0.000</AmountText>
                     <AmountName>stTON</AmountName>
@@ -163,7 +163,7 @@ const UnDelegateBlock = () => {
         <>
             <Description>Enter the number of stTONs you want to undelegate</Description>
             <InputContainer>
-                <Input placeholder="0"></Input>
+                <Input inputMode='decimal' type="text" placeholder="0"></Input>
                 <AmountContainer>
                     <AmountText>0.000</AmountText>
                     <AmountName>stTON</AmountName>

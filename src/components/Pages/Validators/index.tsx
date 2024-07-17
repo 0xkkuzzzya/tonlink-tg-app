@@ -7,7 +7,7 @@ import { ValidatorPageBlocks } from './Blocks';
 
 const MainContainer = styled.div`
     width: 85%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,6 +68,7 @@ const InfoBlockTextName = styled.a`
     color: #fff;
     font-weight: 500;
     margin-top: 15px;
+    white-space: nowrap;
 `
 
 const InfoBlockText = styled.a`
