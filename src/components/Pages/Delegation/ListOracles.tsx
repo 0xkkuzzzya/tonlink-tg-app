@@ -9,14 +9,13 @@ import Tonkeeper from '../../../assets/Validators-logo/TonstakersLogo.webp'
 
 const MainContainer = styled.div`
     width: 90%;
-    height: 100%;
+    height: 85%;
     display: flex;
     align-items: center;
     flex-direction: column;
     background: #1C1C1E;
     border-radius: 10px;
     margin-top: 20px;
-    margin-bottom: 20px;
 `
 
 const HeaderContainer = styled.div`
