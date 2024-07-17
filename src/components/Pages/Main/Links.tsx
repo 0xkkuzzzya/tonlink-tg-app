@@ -15,7 +15,7 @@ const Container = styled.div`
     align-items: center;
     background: #1C1C1E;
     border-radius: 15px;
-    margin-top: 20px;
+    margin-top: 30px;
 `
 
 const Container1 = styled.div`
@@ -26,7 +26,7 @@ const Container1 = styled.div`
     justify-content: center;
     background: #1C1C1E;
     border-radius: 15px;
-    margin-top: 20px;
+    margin-top: 30px;
 `
 
 const MainContainer = styled.div`
@@ -128,17 +128,6 @@ export const Links = () => {
                     </LinkButton>
                 </Container>
             </LinkContainer>
-            {/* <LinkContainer to="/subscriprion" >
-                <Container>
-                    <Column>
-                        <LinkName>Subscription</LinkName>
-                        <Description>Manage your subscriptions</Description>
-                    </Column>
-                    <LinkButton>
-                        <LinkImg src={LinkToSubscription} />
-                    </LinkButton>
-                </Container>
-            </LinkContainer> */}
             <Container1>
                 <LinkName style={{marginLeft: "20px"}}>Explore ecosystem </LinkName>
                 <a href="https://tonlink.network" target="_blank" style={{ textDecoration: "none" }}>
