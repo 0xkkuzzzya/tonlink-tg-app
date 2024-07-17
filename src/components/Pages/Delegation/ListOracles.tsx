@@ -16,6 +16,9 @@ const MainContainer = styled.div`
     background: #1C1C1E;
     border-radius: 10px;
     margin-top: 20px;
+    @media (max-height: 600px) {
+        height: 82%;
+    }
 `
 
 const HeaderContainer = styled.div`
