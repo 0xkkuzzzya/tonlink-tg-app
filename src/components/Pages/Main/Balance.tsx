@@ -12,6 +12,7 @@ const Container = styled.div`
     align-items: center;
     background: #1C1C1E;
     border-radius: 15px;
+    margin-top: 20px;
 `
 
 const Text = styled.a`
