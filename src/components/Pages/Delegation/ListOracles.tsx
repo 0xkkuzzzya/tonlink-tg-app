@@ -16,7 +16,6 @@ const MainContainer = styled.div`
     background: #1C1C1E;
     border-radius: 10px;
     margin-top: 20px;
-    overflow-y: auto;
     @media (max-height: 600px) {
         height: 80%;
     }
@@ -111,76 +110,6 @@ export const ListOracles = () => {
                         <ActiveLink src={Active_Link} />
                     </Oracles>
                 </Link>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
                 <Oracles>
                     <div style={{ marginLeft: "15px" }}>
                         <Logo src={Tonkeeper} />
