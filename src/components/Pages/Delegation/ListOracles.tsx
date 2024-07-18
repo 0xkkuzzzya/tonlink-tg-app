@@ -17,6 +17,7 @@ const MainContainer = styled.div`
     border-radius: 10px;
     margin-top: 20px;
     overflow-y: auto;
+    padding-bottom: 20px;
     @media (max-height: 600px) {
         height: 80%;
     }
@@ -70,13 +71,6 @@ const ActiveLink = styled.img`
     height: 25px;
     margin-left: auto;
     margin-right: 20px;
-`
-
-const NonActiveOraclesName = styled.a`
-    font-size: 18px;
-    font-weight: 500;
-    color: #606061;
-    margin-left: 10px;
 `
 
 const Logo = styled.img`
