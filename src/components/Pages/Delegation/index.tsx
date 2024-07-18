@@ -25,7 +25,7 @@ const HeaderText = styled.a`
     color: white;
     font-size: 20px;
     font-weight: 500;
-    /* margin-top: 20px; */
+    margin-top: 20px;
 `
 
 const HeaderDescription = styled.a`

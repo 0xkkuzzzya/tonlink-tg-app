@@ -10,6 +10,7 @@ import { MyDelegation } from "./Pages/MyDelegation";
 
 const Container = styled.div`
     width: 390px;
+    height: 100vh;
     margin: 0 auto;
     @media (max-width: 390px) {
         width: 100%;
@@ -18,7 +19,6 @@ const Container = styled.div`
 
 const PageContainer = styled.div`
     width: 100%;
-    height: 100vh;
     display: flex;
     justify-content: center;
 `
