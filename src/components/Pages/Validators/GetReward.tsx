@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import LogoValidator from '../../../assets/Validators-logo/TonlinkLabsLogo.webp'
 
 const Container = styled.div`
     width: 90%;
@@ -73,7 +74,7 @@ const ConfirmButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 `
 
 const ButtonText = styled.a`
@@ -82,10 +83,17 @@ const ButtonText = styled.a`
     color: #fff;
 `
 
+const Logo = styled.img`
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+`
+
 
 export const GetReward = () => {
     return (
         <Container>
+            <Logo src={LogoValidator}/>
             <HeaderText>Collect reward from Tonlink Labs</HeaderText>
             <HeaderDescription>Enter the number of TLs you wish to receive from the validator</HeaderDescription>
             <InputContainer>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import LogoValidator from '../../../assets/Validators-logo/TonlinkLabsLogo.webp'
 
 const Header = styled.div`
     width: 100%;
@@ -132,12 +133,19 @@ const ButtonText = styled.a`
     color: #fff;
 `
 
+const Logo = styled.img`
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+`
+
 export const InputDelegation = () => {
 
     const [block, setBlock] = useState('delegate')
 
     return(
         <Contrainer>
+            <Logo src={LogoValidator}/>
             <HeaderText>Delegation to Tonlink Labs</HeaderText>
             {block == 'delegate' && <HeaderDescription>Enter the number of stTONs you want to delegate</HeaderDescription>}
             {block == 'undelegate' && <HeaderDescription>Enter the number of stTONs you want to undelegate</HeaderDescription>}

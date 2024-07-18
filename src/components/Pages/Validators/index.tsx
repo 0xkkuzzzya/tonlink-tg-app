@@ -83,7 +83,7 @@ const InfoBlockText = styled.a`
 
 const GetRewardButton = styled.button`
     width: 100%;
-    height: 40px;
+    height: 43px;
     background: #027BFE;
     border-radius: 10px;
     margin-top: 20px;
@@ -117,7 +117,7 @@ const ActiveLink = styled.img`
 
 const GreyBlock = styled.div`
     width: 100%;
-    height: 40px;
+    height: 43px;
     border-radius: 10px;
     background: #26252B;
     display: flex;
