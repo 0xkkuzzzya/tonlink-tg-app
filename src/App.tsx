@@ -6,7 +6,7 @@ import "./App.css";
 const Container = styled.div`
 	background-color: #000;
 	width: 100%;
-	height: 100vh;
+	height: var(--tg-viewport-stable-height);
 `
 
 
