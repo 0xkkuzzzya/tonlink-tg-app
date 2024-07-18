@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router";
 import Tonlink from '../../../assets/TonLink.webp'
 import Active_Link from '../../../assets/Oracle-logo/ActiveLink.webp'
-import { ValidatorPageBlocks } from './Blocks';
+import { Link } from 'react-router-dom';
 
 const MainContainer = styled.div`
     width: 85%;
@@ -80,7 +80,7 @@ const InfoBlockText = styled.a`
 
 const GetRewardButton = styled.button`
     width: 100%;
-    height: 45px;
+    height: 40px;
     background: #027BFE;
     border-radius: 10px;
     margin-top: 20px;
@@ -88,13 +88,21 @@ const GetRewardButton = styled.button`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0;
 `
 
-const ButtonText = styled.a`
+const Text = styled.a`
     font-weight: 500;
     font-size: 15px;
     color: #fff;
-    margin-left: 10px;
+    margin-left: 20px;
+`
+
+const Amount = styled.a`
+    font-weight: 500;
+    font-size: 15px;
+    color: #fff;
+    margin-right: 20px;
 `
 
 const ActiveLink = styled.img`
@@ -102,6 +110,17 @@ const ActiveLink = styled.img`
     height: 25px;
     margin-left: auto;
     margin-right: 20px;
+`
+
+const GreyBlock = styled.div`
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    background: #26252B;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
 `
 
 
@@ -150,11 +169,26 @@ export const ValidatorsPage = () => {
                     </InfoBlock>
                 </div>
             </ContainerInfo>
-            <GetRewardButton>
-                <ButtonText>Get Rewards</ButtonText>
-                <ActiveLink src={Active_Link} />
-            </GetRewardButton>
-            <ValidatorPageBlocks />
+            <GreyBlock>
+                <Text>My delegation</Text>
+                <Amount>10 stTON</Amount>
+            </GreyBlock>
+            <GreyBlock>
+                <Text>My rewards</Text>
+                <Amount>10 TL</Amount>
+            </GreyBlock>
+            <Link to="/inputdelegation" style={{ textDecoration: "none", width: "100%" }}>
+                <GetRewardButton>
+                    <Text>Delegation</Text>
+                    <ActiveLink src={Active_Link} />
+                </GetRewardButton>
+            </Link>
+            <Link to="/getreward" style={{ textDecoration: "none", width: "100%" }}>
+                <GetRewardButton>
+                    <Text>Get Rewards</Text>
+                    <ActiveLink src={Active_Link} />
+                </GetRewardButton>
+            </Link>
         </MainContainer>
     )
 }

@@ -6,8 +6,31 @@ const Header = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 35px;
+    margin-top: 20px;
     transition: all .3s ease-in-out;
+`
+
+const Contrainer = styled.div`
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+const HeaderText = styled.a`
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+`
+
+const HeaderDescription = styled.a`
+    color: #707579;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 10px;
 `
 
 const HeaderName = styled.a`
@@ -30,13 +53,6 @@ const HorizontalLine = styled.div`
     border-radius: 10px;
     background: #1C1C1E;
     margin-top: 5px;
-`
-
-const Description = styled.a`
-    color: #707579;
-    font-size: 12px;
-    font-weight: 500;
-    margin-top: 20px;
 `
 
 const InputContainer = styled.div`
@@ -107,6 +123,7 @@ const ConfirmButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
 `
 
 const ButtonText = styled.a`
@@ -115,12 +132,15 @@ const ButtonText = styled.a`
     color: #fff;
 `
 
-export const ValidatorPageBlocks = () => {
+export const InputDelegation = () => {
 
     const [block, setBlock] = useState('delegate')
 
     return(
-        <>
+        <Contrainer>
+            <HeaderText>Delegation to Tonlink Labs</HeaderText>
+            {block == 'delegate' && <HeaderDescription>Enter the number of stTONs you want to delegate</HeaderDescription>}
+            {block == 'undelegate' && <HeaderDescription>Enter the number of stTONs you want to undelegate</HeaderDescription>}
             <Header>
                 <HeaderName onClick={() => {setBlock('delegate')}}
                 style={{color: block == "delegate" ? "#fff" : "#707579"}}
@@ -133,14 +153,13 @@ export const ValidatorPageBlocks = () => {
             <HorizontalLine />
             {block == 'delegate' && <DelegateBlock/>}
             {block == 'undelegate' && <UnDelegateBlock/>}
-        </>
+        </Contrainer>
     )
 }
 
 const DelegateBlock = () => {
     return(
         <>
-            <Description>Enter the number of stTONs you want to delegate</Description>
             <InputContainer>
                 <Input inputMode='decimal' type="text" placeholder="0"></Input>
                 <AmountContainer>
@@ -161,7 +180,6 @@ const DelegateBlock = () => {
 const UnDelegateBlock = () => {
     return(
         <>
-            <Description>Enter the number of stTONs you want to undelegate</Description>
             <InputContainer>
                 <Input inputMode='decimal' type="text" placeholder="0"></Input>
                 <AmountContainer>
