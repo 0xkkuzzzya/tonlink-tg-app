@@ -16,17 +16,16 @@ const Container = styled.div`
 
 const HeaderContainer = styled.div`
     width: 90%;
-    height: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
 `
 
 const HeaderText = styled.a`
     color: white;
     font-size: 20px;
     font-weight: 500;
+    margin-top: 20px;
 `
 
 const HeaderDescription = styled.a`
