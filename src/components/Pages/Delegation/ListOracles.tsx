@@ -16,6 +16,7 @@ const MainContainer = styled.div`
     background: #1C1C1E;
     border-radius: 10px;
     margin-top: 20px;
+    overflow-y: auto;
     @media (max-height: 600px) {
         height: 80%;
     }
@@ -39,7 +40,6 @@ const OraclesContainer = styled.div`
     width: 90%;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
 `
 
 const Oracles = styled.div`
