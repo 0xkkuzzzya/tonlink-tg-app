@@ -9,7 +9,7 @@ import Tonkeeper from '../../../assets/Validators-logo/TonstakersLogo.webp'
 
 const MainContainer = styled.div`
     width: 90%;
-    height: 85%;
+    height: 55%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -17,7 +17,7 @@ const MainContainer = styled.div`
     border-radius: 10px;
     margin-top: 20px;
     @media (max-height: 600px) {
-        height: 82%;
+        height: 52%;
     }
 `
 
