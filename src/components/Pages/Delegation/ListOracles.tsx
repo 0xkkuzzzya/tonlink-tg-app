@@ -39,6 +39,7 @@ const OraclesContainer = styled.div`
     width: 90%;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 `
 
 const Oracles = styled.div`
@@ -110,6 +111,76 @@ export const ListOracles = () => {
                         <ActiveLink src={Active_Link} />
                     </Oracles>
                 </Link>
+                <Oracles>
+                    <div style={{ marginLeft: "15px" }}>
+                        <Logo src={Tonkeeper} />
+                    </div>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
+                        <ValidatorDescription>12% reward fees</ValidatorDescription>
+                    </div>
+                    <ActiveLink src={NonActive_Link} />
+                </Oracles>
+                <Oracles>
+                    <div style={{ marginLeft: "15px" }}>
+                        <Logo src={Tonkeeper} />
+                    </div>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
+                        <ValidatorDescription>12% reward fees</ValidatorDescription>
+                    </div>
+                    <ActiveLink src={NonActive_Link} />
+                </Oracles>
+                <Oracles>
+                    <div style={{ marginLeft: "15px" }}>
+                        <Logo src={Tonkeeper} />
+                    </div>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
+                        <ValidatorDescription>12% reward fees</ValidatorDescription>
+                    </div>
+                    <ActiveLink src={NonActive_Link} />
+                </Oracles>
+                <Oracles>
+                    <div style={{ marginLeft: "15px" }}>
+                        <Logo src={Tonkeeper} />
+                    </div>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
+                        <ValidatorDescription>12% reward fees</ValidatorDescription>
+                    </div>
+                    <ActiveLink src={NonActive_Link} />
+                </Oracles>
+                <Oracles>
+                    <div style={{ marginLeft: "15px" }}>
+                        <Logo src={Tonkeeper} />
+                    </div>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
+                        <ValidatorDescription>12% reward fees</ValidatorDescription>
+                    </div>
+                    <ActiveLink src={NonActive_Link} />
+                </Oracles>
+                <Oracles>
+                    <div style={{ marginLeft: "15px" }}>
+                        <Logo src={Tonkeeper} />
+                    </div>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
+                        <ValidatorDescription>12% reward fees</ValidatorDescription>
+                    </div>
+                    <ActiveLink src={NonActive_Link} />
+                </Oracles>
+                <Oracles>
+                    <div style={{ marginLeft: "15px" }}>
+                        <Logo src={Tonkeeper} />
+                    </div>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
+                        <ValidatorDescription>12% reward fees</ValidatorDescription>
+                    </div>
+                    <ActiveLink src={NonActive_Link} />
+                </Oracles>
                 <Oracles>
                     <div style={{ marginLeft: "15px" }}>
                         <Logo src={Tonkeeper} />

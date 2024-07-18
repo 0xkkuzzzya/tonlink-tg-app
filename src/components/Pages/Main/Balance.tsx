@@ -37,28 +37,6 @@ const BalanceText = styled.a`
     white-space: nowrap;
 `
 
-const BalanceLogo = styled.img`
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-`
-
-const LinkButton = styled.div`
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #26252B;
-    margin-bottom: 30px;
-    border-radius: 10px;
-`
-
-const LinkImg = styled.img`
-    width: 25px;
-    height: 25px;
-`
-
 const LinkContainer = styled.div`
     width: 50%;
     display: flex;
