@@ -15,9 +15,9 @@ const Container = styled.div`
     @media (max-height: 590px) {
 		height: 100%;
 		margin-bottom: 20px;
+        overflow: auto;
 	}
 `
-
 
 export const MainPage = () => {
 

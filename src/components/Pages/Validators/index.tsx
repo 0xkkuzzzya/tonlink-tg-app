@@ -13,6 +13,9 @@ const MainContainer = styled.div`
     align-items: center;
     margin-bottom: 20px;
     overflow: hidden;
+    @media (max-height: 600px) {
+        overflow: auto;
+    }
 `
 
 const HeaderContainer = styled.div`
