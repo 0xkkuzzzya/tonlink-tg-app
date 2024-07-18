@@ -28,6 +28,8 @@ const HeaderContainer = styled.div`
     height: 50px;
     display: flex;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 `
 
 const HeaderName = styled.a`
