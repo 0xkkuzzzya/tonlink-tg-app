@@ -12,6 +12,7 @@ const MainContainer = styled.div`
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    overflow: hidden;
 `
 
 const HeaderContainer = styled.div`

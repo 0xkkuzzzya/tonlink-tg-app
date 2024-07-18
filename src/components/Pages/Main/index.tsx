@@ -11,6 +11,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
     @media (max-height: 590px) {
 		height: 100%;
 		margin-bottom: 20px;
