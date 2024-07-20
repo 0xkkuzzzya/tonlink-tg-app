@@ -5,6 +5,8 @@ import NonActive_Link from '../../../assets/Oracle-logo/NonActiveLink.webp'
 import { Link } from "react-router-dom";
 import Tonlink from '../../../assets/TonLink.webp'
 import Tonkeeper from '../../../assets/Validators-logo/TonstakersLogo.webp'
+import { useAllValidators } from "../../../web3/useUserAllBalance";
+import { ValInfo } from "../../../web3/validators";
 
 
 const MainContainer = styled.div`
@@ -89,104 +91,29 @@ const ValidatorDescription = styled.a`
 
 
 export const ListOracles = () => {
+    const [ allValidators, setAllValidators] = useAllValidators()
+
+    let validators = allValidators.map((val: ValInfo) => 
+        <Link to={`/validator/${val.address}`} style={{ textDecoration: "none" }}>
+            <Oracles style={{ marginTop: "0px" }}>
+                <div style={{ marginLeft: "15px" }}>
+                    <Logo src={val.logo} />
+                </div>
+                <div style={{display: "flex", flexDirection: "column"}}>
+                    <ActiveOraclesName>{val.name}</ActiveOraclesName>
+                    <ValidatorDescription>{val.fee}% reward fees</ValidatorDescription>
+                </div>
+                <ActiveLink src={Active_Link} />
+            </Oracles>
+        </Link>
+    )
     return (
         <MainContainer>
             <HeaderContainer>
                 <HeaderName>Explore validators</HeaderName>
             </HeaderContainer>
             <OraclesContainer>
-                <Link to="/validators" style={{ textDecoration: "none" }}>
-                    <Oracles style={{ marginTop: "0px" }}>
-                        <div style={{ marginLeft: "15px" }}>
-                            <Logo src={Tonlink} />
-                        </div>
-                        <div style={{display: "flex", flexDirection: "column"}}>
-                            <ActiveOraclesName>Tonlink Labs</ActiveOraclesName>
-                            <ValidatorDescription>18% reward fees</ValidatorDescription>
-                        </div>
-                        <ActiveLink src={Active_Link} />
-                    </Oracles>
-                </Link>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
-                <Oracles>
-                    <div style={{ marginLeft: "15px" }}>
-                        <Logo src={Tonkeeper} />
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                        <ActiveOraclesName>Tonkeeper</ActiveOraclesName>
-                        <ValidatorDescription>12% reward fees</ValidatorDescription>
-                    </div>
-                    <ActiveLink src={NonActive_Link} />
-                </Oracles>
+                <>{validators}</>
             </OraclesContainer>
         </MainContainer>
     )

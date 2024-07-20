@@ -1,9 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Tonlink from '../../../assets/TonLink.webp'
 import Active_Link from '../../../assets/Oracle-logo/ActiveLink.webp'
 import { Link } from 'react-router-dom';
+import { Skeleton } from '@mui/material';
+import { useTonAddress, useTonWallet } from '@tonconnect/ui-react';
+import { GetValidatorInfo, ValidatorInfo } from '../../../web3/validators';
+import { useVBalance } from '../../../web3/useVBalance';
+import { GetDelegationByValidator } from '../../../web3/delegation';
+import { toFixed } from '../../../web3/utils';
 
 const MainContainer = styled.div`
     width: 85%;
@@ -34,6 +40,7 @@ const HeaderText = styled.a`
     color: #fff;
     font-size: 25px;
     font-weight: 500;
+    margin-left: 5px;
 `
 
 const DescriptionContainer = styled.div`
@@ -126,67 +133,111 @@ const GreyBlock = styled.div`
     margin-top: 20px;
 `
 
-
 export const ValidatorsPage = () => {
 
     const navigate = useNavigate();
+    const userFriendlyAddress = useTonAddress();
+	const wallet = useTonWallet();
+    let { address } = useParams() 
+
+    const [vBalance, setVBalance] = useVBalance()
+
+    const [valInfo, setValInfo] = useState({
+        validator_manager_address_raw: "",
+        validator_stake_amount: -1,
+        validator_delegation_amount: -1,
+        validator_link_info: {
+            name: "",
+            logo: "",
+            description: "",
+            fee: "",
+            website: ""
+        },
+        delegation_pool_list: [""],
+        srv_securing: -1,
+    })
+
 
     useEffect(() => {
         window.Telegram.WebApp.BackButton.show()
         window.Telegram.WebApp.BackButton.onClick(() => navigate(-1))
+
+        async function main() {
+            let val_info_new = await GetValidatorInfo(address!)
+            setValInfo({
+                validator_manager_address_raw: val_info_new.validator_manager_address_raw,
+                validator_stake_amount: val_info_new.validator_stake_amount,
+                validator_delegation_amount: val_info_new.validator_delegation_amount,
+                validator_link_info: {
+                    name: val_info_new.validator_link_info.name,
+                    logo: val_info_new.validator_link_info.logo,
+                    description: val_info_new.validator_link_info.description,
+                    fee: val_info_new.validator_link_info.fee,
+                    website: val_info_new.validator_link_info.website,
+                },
+                delegation_pool_list: val_info_new.delegation_pool_list,
+                srv_securing: val_info_new.srv_securing,
+            })
+
+            let balances = await GetDelegationByValidator(userFriendlyAddress, address!)
+            setVBalance({
+                delegation_balance: balances[0],
+                reward_balance: balances[1]
+            })
+        }
+        main()
     }, [])
 
     return (
         <MainContainer>
             <HeaderContainer>
-                <Logo src={Tonlink} />
-                <HeaderText>Tonlink Labs</HeaderText>
+                {valInfo.validator_link_info.logo != "" ? <Logo src={Tonlink} /> : <Skeleton sx={{ bgcolor: '#616161' }} variant="circular" width={40} height={40} animation="wave"  /> }
+                <HeaderText>{ valInfo.validator_link_info.name != "" ? "Tonlink Labs" : <Skeleton sx={{ bgcolor: '#616161', fontSize: '25px' }} variant="text" width={150} height={25} animation="wave"  /> }</HeaderText>
             </HeaderContainer>
             <DescriptionContainer>
                 <Description>
-                    There are many blockchains in existence today,
-                    each with different advantages and disadvantages.
-                    What differentiates Solana is its design which enables
-                    the dissemination of frequent, inexpensive information.
+                    { valInfo.validator_link_info.description != "" ? valInfo.validator_link_info.description :
+                    <Skeleton sx={{ bgcolor: '#616161' }}  variant="rounded" width={"100%"} height={60} animation="wave" /> 
+                    } 
                 </Description>
             </DescriptionContainer>
             <ContainerInfo>
                 <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    <InfoBlock>
-                        <InfoBlockTextName>TOTAL STAKERS</InfoBlockTextName>
-                        <InfoBlockText>25 634</InfoBlockText>
+                <InfoBlock>
+                        <InfoBlockTextName>TOTAL STAKED</InfoBlockTextName>
+                        <InfoBlockText>{valInfo.validator_stake_amount != -1 ? valInfo.validator_stake_amount + " stTON" : <Skeleton sx={{ bgcolor: '#616161' }}  variant="rounded" width={100} height={20} animation="wave" /> }</InfoBlockText>
                     </InfoBlock>
                     <InfoBlock>
-                        <InfoBlockTextName>TOTAL RESTAKED</InfoBlockTextName>
-                        <InfoBlockText>100K stTON</InfoBlockText>
+                        <InfoBlockTextName>TOTAL DELEGATED</InfoBlockTextName>
+                        <InfoBlockText>{valInfo.validator_delegation_amount != -1 ? valInfo.validator_delegation_amount + " TL" : <Skeleton sx={{ bgcolor: '#616161' }}  variant="rounded" width={100} height={20} animation="wave" /> } </InfoBlockText>
                     </InfoBlock>
                 </div>
                 <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "20px" }}>
                     <InfoBlock>
                         <InfoBlockTextName>VALIDATOR FEE</InfoBlockTextName>
-                        <InfoBlockText>60%</InfoBlockText>
+                        <InfoBlockText>{valInfo.validator_link_info.fee != "" ? valInfo.validator_link_info.fee + "%" : <Skeleton sx={{ bgcolor: '#616161' }}  variant="rounded" width={100} height={20} animation="wave" /> }</InfoBlockText>
                     </InfoBlock>
                     <InfoBlock>
-                        <InfoBlockTextName>TOTAL DELEGATED</InfoBlockTextName>
-                        <InfoBlockText>4.3M $TL</InfoBlockText>
+                        <InfoBlockTextName>SRVs SECURING</InfoBlockTextName>
+                        <InfoBlockText>{valInfo.srv_securing != -1 ? valInfo.srv_securing : <Skeleton sx={{ bgcolor: '#616161' }}  variant="rounded" width={100} height={20} animation="wave" /> }</InfoBlockText>
                     </InfoBlock>
                 </div>
             </ContainerInfo>
             <GreyBlock>
                 <Text>My delegation</Text>
-                <Amount>10 stTON</Amount>
+                <Amount>{toFixed(vBalance.delegation_balance, 2)} stTON</Amount>
             </GreyBlock>
             <GreyBlock>
                 <Text>My rewards</Text>
-                <Amount>10 TL</Amount>
+                <Amount>{toFixed(vBalance.reward_balance, 2)} TL</Amount>
             </GreyBlock>
-            <Link to="/inputdelegation" style={{ textDecoration: "none", width: "100%" }}>
+            <Link to={`/inputdelegation/${address}`} style={{ textDecoration: "none", width: "100%" }}>
                 <GetRewardButton>
                     <Text>Delegation</Text>
                     <ActiveLink src={Active_Link} />
                 </GetRewardButton>
             </Link>
-            <Link to="/getreward" style={{ textDecoration: "none", width: "100%" }}>
+            <Link to={`/getreward/${address}`} style={{ textDecoration: "none", width: "100%" }}>
                 <GetRewardButton>
                     <Text>Get Rewards</Text>
                     <ActiveLink src={Active_Link} />
