@@ -33,11 +33,11 @@ export const MainIndex = () => {
                 <Routes>
                     <Route path="/" element={<MainPage />} />
                     <Route path="/delegation" element={<DelegationPage />} />
-                    <Route path="/validators" element={<ValidatorsPage />} />
+                    <Route path="/validator/:address" element={<ValidatorsPage />} />
                     <Route path="/mydelegation" element={<MyDelegation />} />
                     <Route path="/confirmDelegation" element={<ConfirmDelegation />} />
-                    <Route path="/inputdelegation" element={<InputDelegation />} />
-                    <Route path="/getreward" element={<GetReward />} />
+                    <Route path="/inputdelegation/:address" element={<InputDelegation />} />
+                    <Route path="/getreward/:address" element={<GetReward />} />
                 </Routes>
             </PageContainer>
         </Container>

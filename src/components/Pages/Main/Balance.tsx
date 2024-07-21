@@ -3,6 +3,9 @@ import React from "react";
 import { useTonAddress } from "@tonconnect/ui-react";
 import { useEffect, useState } from "react";
 import { GetBalance } from "../../../web3/balance";
+import Skeleton from '@mui/material/Skeleton';
+import { useUserAllBalance } from "../../../web3/useUserAllBalance";
+import { toFixed } from "../../../web3/utils";
 
 
 const Container = styled.div`
@@ -48,27 +51,16 @@ const LinkContainer = styled.div`
 
 
 export const Balance = () => {
-    const userFriendlyAddress = useTonAddress();
-    const [balance, setBalance] = useState("")
-
-    useEffect(() => {
-        async function main() {
-            let tb = await GetBalance(userFriendlyAddress === undefined ? "" : userFriendlyAddress)
-            setBalance(tb)
-        }
-        main()
-    }, [userFriendlyAddress])
-
+    const [ userAllBalance, setUserAllBalance] = useUserAllBalance();
     return (
         <Container>
             <BlanaceContainer>
                 <Text>Your balance</Text>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <BalanceText>{(Number(balance) / 10 ** 9).toFixed(0)} stTON</BalanceText>
-                    
+                    <BalanceText> { userAllBalance.balance != "" ? toFixed((Number(userAllBalance.balance) / 10 ** 9), 2) : 0 } stTON</BalanceText>
                 </div>
-                <Text>0 stTON in delegations</Text>
-                <Text>0 $TL in reward</Text>
+                <Text>{ userAllBalance.all_delegation != "" ? toFixed((Number(userAllBalance.all_delegation) / 10 ** 9), 2) : 0 } stTON in delegations</Text>
+                <Text>{ userAllBalance.all_rewards != "" ? toFixed((Number(userAllBalance.all_rewards) / 10 ** 9), 2) : 0 } TL in reward</Text>
             </BlanaceContainer>
         </Container>
     )

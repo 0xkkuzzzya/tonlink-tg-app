@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import LogoValidator from '../../../assets/Validators-logo/TonlinkLabsLogo.webp'
+import { useAllValidators, useUserAllBalance } from "../../../web3/useUserAllBalance";
+import { useAmountIn, useValue, useVBalance } from "../../../web3/useVBalance";
+import { useParams } from "react-router";
 
 const Header = styled.div`
     width: 100%;
@@ -87,6 +90,7 @@ const MAXButton = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 `
 
 const MAXButtonText = styled.a`
@@ -127,6 +131,18 @@ const ConfirmButton = styled.button`
     margin-bottom: 60px;
 `
 
+const InactiveConfirmButton = styled.button`
+    width: 100%;
+    height: 45px;
+    background: #757575;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+`
+
 const ButtonText = styled.a`
     font-weight: 500;
     font-size: 15px;
@@ -137,16 +153,21 @@ const Logo = styled.img`
     width: 80px;
     height: 80px;
     margin-bottom: 20px;
+    border-radius: 50px;
 `
 
 export const InputDelegation = () => {
 
     const [block, setBlock] = useState('delegate')
+    const [ allValidators, setAllValidators] = useAllValidators()
+    let { address } = useParams()
+
+    let val = allValidators.find((val) => val.address == address)
 
     return(
         <Contrainer>
-            <Logo src={LogoValidator}/>
-            <HeaderText>Delegation to Tonlink Labs</HeaderText>
+            <Logo src={val?.logo}/>
+            <HeaderText>Delegation to {val?.name}</HeaderText>
             {block == 'delegate' && <HeaderDescription>Enter the number of stTONs you want to delegate</HeaderDescription>}
             {block == 'undelegate' && <HeaderDescription>Enter the number of stTONs you want to undelegate</HeaderDescription>}
             <Header>
@@ -166,41 +187,123 @@ export const InputDelegation = () => {
 }
 
 const DelegateBlock = () => {
-    return(
-        <>
-            <InputContainer>
-                <Input inputMode='decimal' type="text" placeholder="0"></Input>
-                <AmountContainer>
-                    <AmountText>0.000</AmountText>
-                    <AmountName>stTON</AmountName>
-                </AmountContainer>
-                <MAXButton>
-                    <MAXButtonText>MAX</MAXButtonText>
-                </MAXButton>
-            </InputContainer>
+    const [ userAllBalance, setUserAllBalance] = useUserAllBalance();
+    const [value, setValue] = useValue();
+    const [amtIn, setAmtIn] = useAmountIn()
+
+    const HandleInputAmpunt = (e: FormEvent<HTMLInputElement>) => {
+        setValue({value: e.currentTarget.value})
+    };
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setAmtIn(
+                {
+                    amt: value.value,
+                }
+            );
+        }, 350);
+        return () => clearTimeout(timeoutId);
+    }, [value]);
+
+    let button;
+
+    if (Number(value.value) == 0 || isNaN(Number(value.value))) {
+        button = <>
+            <InactiveConfirmButton>
+                <ButtonText>Enter amount</ButtonText>
+            </InactiveConfirmButton>
+        </> 
+    } else if (Number(value.value) > Number(userAllBalance.balance) / 10**9) {
+        button = <>
+            <InactiveConfirmButton>
+                <ButtonText>Insufficient funds</ButtonText>
+            </InactiveConfirmButton>
+        </>
+    } else {
+        button = <>
             <ConfirmButton>
                 <ButtonText>Confirm</ButtonText>
             </ConfirmButton>
+        </>
+    }
+
+    return(
+        <>
+            <InputContainer>
+                <Input inputMode='decimal' type="text" placeholder="0" onChange={HandleInputAmpunt} value={value.value}></Input>
+                <AmountContainer>
+                    <AmountText>{(Number(userAllBalance.balance) / 10**9).toFixed(3)}</AmountText>
+                    <AmountName>stTON</AmountName>
+                </AmountContainer>
+                <MAXButton onClick={() => {
+                    setValue({value: (Number(userAllBalance.balance) / 10**9).toFixed(3)})
+                }}>
+                    <MAXButtonText>MAX</MAXButtonText>
+                </MAXButton>
+            </InputContainer>
+            <>{button}</> 
         </>
     )
 }
 
 const UnDelegateBlock = () => {
-    return(
-        <>
-            <InputContainer>
-                <Input inputMode='decimal' type="text" placeholder="0"></Input>
-                <AmountContainer>
-                    <AmountText>0.000</AmountText>
-                    <AmountName>stTON</AmountName>
-                </AmountContainer>
-                <MAXButton>
-                    <MAXButtonText>MAX</MAXButtonText>
-                </MAXButton>
-            </InputContainer>
+    const [vBalance, setVBalance] = useVBalance()
+    const [value, setValue] = useValue();
+    const [amtIn, setAmtIn] = useAmountIn()
+
+    const HandleInputAmpunt = (e: FormEvent<HTMLInputElement>) => {
+        setValue({value: e.currentTarget.value})
+    };
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setAmtIn(
+                {
+                    amt: value.value,
+                }
+            );
+        }, 350);
+        return () => clearTimeout(timeoutId);
+    }, [value]);
+
+    let button;
+
+    if (Number(value.value) == 0 || isNaN(Number(value.value))) {
+        button = <>
+            <InactiveConfirmButton>
+                <ButtonText>Enter amount</ButtonText>
+            </InactiveConfirmButton>
+        </> 
+    } else if (Number(value.value) > vBalance.delegation_balance / 10**9) {
+        button = <>
+            <InactiveConfirmButton>
+                <ButtonText>Insufficient funds</ButtonText>
+            </InactiveConfirmButton>
+        </>
+    } else {
+        button = <>
             <ConfirmButton>
                 <ButtonText>Confirm</ButtonText>
             </ConfirmButton>
+        </>
+    }
+
+    return(
+        <>
+            <InputContainer>
+                <Input inputMode='decimal' type="text" placeholder="0" onChange={HandleInputAmpunt} value={value.value}></Input>
+                <AmountContainer>
+                    <AmountText>{(vBalance.delegation_balance / 10**9).toFixed(3)}</AmountText>
+                    <AmountName>stTON</AmountName>
+                </AmountContainer>
+                <MAXButton onClick={() => {
+                    setValue({value: (vBalance.delegation_balance / 10**9).toFixed(3)})
+                }}>
+                    <MAXButtonText>MAX</MAXButtonText>
+                </MAXButton>
+            </InputContainer>
+            <>{button}</>
         </>
     )
 }
