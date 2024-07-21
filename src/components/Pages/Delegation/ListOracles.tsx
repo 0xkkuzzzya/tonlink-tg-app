@@ -80,6 +80,7 @@ const ActiveLink = styled.img`
 const Logo = styled.img`
     width: 40px;
     height: 40px;
+    border-radius: 50px;
 `
 
 const ValidatorDescription = styled.a`
@@ -101,7 +102,7 @@ export const ListOracles = () => {
                 </div>
                 <div style={{display: "flex", flexDirection: "column"}}>
                     <ActiveOraclesName>{val.name}</ActiveOraclesName>
-                    <ValidatorDescription>{val.fee}% reward fees</ValidatorDescription>
+                    <ValidatorDescription>{val.fee}% validator fees</ValidatorDescription>
                 </div>
                 <ActiveLink src={Active_Link} />
             </Oracles>

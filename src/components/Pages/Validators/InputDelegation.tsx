@@ -1,8 +1,9 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import LogoValidator from '../../../assets/Validators-logo/TonlinkLabsLogo.webp'
-import { useUserAllBalance } from "../../../web3/useUserAllBalance";
+import { useAllValidators, useUserAllBalance } from "../../../web3/useUserAllBalance";
 import { useAmountIn, useValue, useVBalance } from "../../../web3/useVBalance";
+import { useParams } from "react-router";
 
 const Header = styled.div`
     width: 100%;
@@ -152,16 +153,21 @@ const Logo = styled.img`
     width: 80px;
     height: 80px;
     margin-bottom: 20px;
+    border-radius: 50px;
 `
 
 export const InputDelegation = () => {
 
     const [block, setBlock] = useState('delegate')
+    const [ allValidators, setAllValidators] = useAllValidators()
+    let { address } = useParams()
+
+    let val = allValidators.find((val) => val.address == address)
 
     return(
         <Contrainer>
-            <Logo src={LogoValidator}/>
-            <HeaderText>Delegation to Tonlink Labs</HeaderText>
+            <Logo src={val?.logo}/>
+            <HeaderText>Delegation to {val?.name}</HeaderText>
             {block == 'delegate' && <HeaderDescription>Enter the number of stTONs you want to delegate</HeaderDescription>}
             {block == 'undelegate' && <HeaderDescription>Enter the number of stTONs you want to undelegate</HeaderDescription>}
             <Header>
