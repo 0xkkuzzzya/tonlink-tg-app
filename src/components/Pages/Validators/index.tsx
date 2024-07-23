@@ -93,12 +93,12 @@ const GetRewardButton = styled.button`
     height: 43px;
     background: #027BFE;
     border-radius: 10px;
-    margin-top: 20px;
     text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0;
+    cursor: pointer;
 `
 
 const Text = styled.a`
@@ -231,13 +231,13 @@ export const ValidatorsPage = () => {
                 <Text>My rewards</Text>
                 <Amount>{toFixed(vBalance.reward_balance, 2)} TL</Amount>
             </GreyBlock>
-            <Link to={`/inputdelegation/${address}`} style={{ textDecoration: "none", width: "100%" }}>
+            <Link to={`/inputdelegation/${address}`} style={{ textDecoration: "none", width: "100%", height: "43px", marginTop: "20px" }}>
                 <GetRewardButton>
                     <Text>Delegation</Text>
                     <ActiveLink src={Active_Link} />
                 </GetRewardButton>
             </Link>
-            <Link to={`/getreward/${address}`} style={{ textDecoration: "none", width: "100%" }}>
+            <Link to={`/getreward/${address}`} style={{ textDecoration: "none", width: "100%", height: "43px", marginTop: "20px" }}>
                 <GetRewardButton>
                     <Text>Get Rewards</Text>
                     <ActiveLink src={Active_Link} />
