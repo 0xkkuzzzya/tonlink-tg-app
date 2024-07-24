@@ -101,6 +101,20 @@ const GetRewardButton = styled.button`
     cursor: pointer;
 `
 
+const GetRewardButtonInactive = styled.button`
+    width: 100%;
+    height: 43px;
+    background: #757575;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+`
+
 const Text = styled.a`
     font-weight: 500;
     font-size: 15px;
@@ -231,18 +245,32 @@ export const ValidatorsPage = () => {
                 <Text>My rewards</Text>
                 <Amount>{toFixed(vBalance.reward_balance, 2)} TL</Amount>
             </GreyBlock>
-            <Link to={`/inputdelegation/${address}`} style={{ textDecoration: "none", width: "100%", height: "43px", marginTop: "20px" }}>
-                <GetRewardButton>
+            { vBalance.delegation_balance == 0 ? 
+                <GetRewardButtonInactive>
                     <Text>Delegation</Text>
                     <ActiveLink src={Active_Link} />
-                </GetRewardButton>
-            </Link>
-            <Link to={`/getreward/${address}`} style={{ textDecoration: "none", width: "100%", height: "43px", marginTop: "20px" }}>
-                <GetRewardButton>
+                </GetRewardButtonInactive>
+                :
+                <Link to={`/inputdelegation/${address}`} style={{ textDecoration: "none", width: "100%" }}>
+                    <GetRewardButton>
+                        <Text>Delegation</Text>
+                        <ActiveLink src={Active_Link} />
+                    </GetRewardButton>
+                </Link>
+            }
+            { vBalance.reward_balance == 0 ? 
+                <GetRewardButtonInactive>
                     <Text>Get Rewards</Text>
                     <ActiveLink src={Active_Link} />
-                </GetRewardButton>
-            </Link>
+                </GetRewardButtonInactive>
+                :
+                <Link to={`/getreward/${address}`} style={{ textDecoration: "none", width: "100%" }}>
+                    <GetRewardButton>
+                        <Text>Get Rewards</Text>
+                        <ActiveLink src={Active_Link} />
+                    </GetRewardButton>
+                </Link>
+            }
         </MainContainer>
     )
 }
