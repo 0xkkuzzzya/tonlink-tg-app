@@ -38,6 +38,9 @@ const BalanceText = styled.a`
     font-weight: 600;
     color: #fff;
     white-space: nowrap;
+    display: flex;
+    align-items: center ;
+    width: 100%;
 `
 
 const LinkContainer = styled.div`
@@ -56,8 +59,10 @@ export const Balance = () => {
         <Container>
             <BlanaceContainer>
                 <Text>Your balance</Text>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <BalanceText> { userAllBalance.balance != "" ? toFixed((Number(userAllBalance.balance) / 10 ** 9), 2) : 0 } stTON</BalanceText>
+                <div style={{ display: "flex", alignItems: "center"}}>
+                    <BalanceText> 
+                        { userAllBalance.balance != "" ? toFixed((Number(userAllBalance.balance) / 10 ** 9), 2) : 0 } stTON
+                    </BalanceText>
                 </div>
                 <Text>{ userAllBalance.all_delegation != "" ? toFixed((Number(userAllBalance.all_delegation) / 10 ** 9), 2) : 0 } stTON in delegations</Text>
                 <Text>{ userAllBalance.all_rewards != "" ? toFixed((Number(userAllBalance.all_rewards) / 10 ** 9), 2) : 0 } TL in reward</Text>

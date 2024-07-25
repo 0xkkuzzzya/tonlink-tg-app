@@ -3,11 +3,13 @@ import { createStore } from './store';
 type VBalance= {
         delegation_balance: number,
         reward_balance: number,
+        delegation_manager_address: string
 }
 
 const defaultState: VBalance = {
         delegation_balance: 0,
         reward_balance: 0,
+        delegation_manager_address: ""
 };
 
 interface Value {

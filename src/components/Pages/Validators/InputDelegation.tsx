@@ -4,6 +4,9 @@ import LogoValidator from '../../../assets/Validators-logo/TonlinkLabsLogo.webp'
 import { useAllValidators, useUserAllBalance } from "../../../web3/useUserAllBalance";
 import { useAmountIn, useValue, useVBalance } from "../../../web3/useVBalance";
 import { useParams } from "react-router";
+import { SendTransactionRequest, TonConnectUI, useTonAddress, useTonConnectUI } from "@tonconnect/ui-react";
+import { HubAddress } from "../../../web3/const";
+import { GetValidatorInfo } from "../../../web3/validators";
 
 const Header = styled.div`
     width: 100%;
@@ -129,6 +132,7 @@ const ConfirmButton = styled.button`
     justify-content: center;
     align-items: center;
     margin-bottom: 60px;
+    cursor: pointer;
 `
 
 const InactiveConfirmButton = styled.button`
@@ -141,6 +145,7 @@ const InactiveConfirmButton = styled.button`
     justify-content: center;
     align-items: center;
     margin-bottom: 60px;
+    cursor: pointer;
 `
 
 const ButtonText = styled.a`
@@ -172,11 +177,11 @@ export const InputDelegation = () => {
             {block == 'undelegate' && <HeaderDescription>Enter the number of stTONs you want to undelegate</HeaderDescription>}
             <Header>
                 <HeaderName onClick={() => {setBlock('delegate')}}
-                style={{color: block == "delegate" ? "#fff" : "#707579"}}
+                    style={{color: block == "delegate" ? "#fff" : "#707579"}}
                 >Delegate</HeaderName>
                 <VerticalLine />
                 <HeaderName onClick={() => {setBlock('undelegate')}}
-                style={{color: block == "undelegate" ? "#fff" : "#707579"}}
+                    style={{color: block == "undelegate" ? "#fff" : "#707579"}}
                 >Undelegate</HeaderName>
             </Header>
             <HorizontalLine />
@@ -186,10 +191,68 @@ export const InputDelegation = () => {
     )
 }
 
+
+const sendDelegateTx = async (amount: string, val_address: string, user_address: string, tonConnectUI: TonConnectUI) => {
+    let body = await (await fetch(`https://api.tonlink.network/api/api/v1/msg/delegate?address=${user_address}&amount=${amount}&val_address=${val_address}`)).json()
+    if (body.ok == "true") {
+        let dm_deployed = body.result.dm_deployed
+        let parsed_amount = (0.15 * 10**9)
+        let myTransaction: SendTransactionRequest = {
+            validUntil: Math.floor(Date.now() / 1000) + 600,
+            messages: []
+        }
+
+        if (dm_deployed == "false") {
+            myTransaction.messages.push({
+                address: HubAddress,
+                amount: parsed_amount.toString(),
+                payload: "te6cckEBAQEADgAAGAAAAfQAAAAAAAAAAOVOEhE="
+            })
+        }
+
+        let payload_from_api = body.result.payload
+        let jw_address = body.result.jw_address
+
+        myTransaction.messages.push({
+            address: jw_address,
+            amount: parsed_amount.toString(),
+            payload: payload_from_api
+        })
+
+        tonConnectUI.sendTransaction(myTransaction);
+    }
+}
+
+const sendUndelegateTx = async (amount: string, val_address: string, dm_address: string, tonConnectUI: TonConnectUI) => {
+    let val_info = await GetValidatorInfo(val_address)
+
+    let body = await (await fetch(`https://api.tonlink.network/api/api/v1/msg/undelegate?address=${val_info.validator_manager_address_raw}&amount=${amount}`)).json()
+    if (body.ok == "true") {
+        let parsed_amount = (0.15 * 10**9)
+        let myTransaction: SendTransactionRequest = {
+            validUntil: Math.floor(Date.now() / 1000) + 600,
+            messages: []
+        }
+
+        let payload_from_api = body.result.payload
+
+        myTransaction.messages.push({
+            address: dm_address,
+            amount: parsed_amount.toString(),
+            payload: payload_from_api
+        })
+
+        tonConnectUI.sendTransaction(myTransaction);
+    }
+}
+
 const DelegateBlock = () => {
     const [ userAllBalance, setUserAllBalance] = useUserAllBalance();
     const [value, setValue] = useValue();
     const [amtIn, setAmtIn] = useAmountIn()
+    const [ tonConnectUI, setOptions] = useTonConnectUI();
+    let { address } = useParams()
+    const userFriendlyAddress = useTonAddress();
 
     const HandleInputAmpunt = (e: FormEvent<HTMLInputElement>) => {
         setValue({value: e.currentTarget.value})
@@ -222,7 +285,7 @@ const DelegateBlock = () => {
         </>
     } else {
         button = <>
-            <ConfirmButton>
+            <ConfirmButton onClick={() => {sendDelegateTx(amtIn.amt, address!, userFriendlyAddress, tonConnectUI);}}>
                 <ButtonText>Confirm</ButtonText>
             </ConfirmButton>
         </>
@@ -251,6 +314,11 @@ const UnDelegateBlock = () => {
     const [vBalance, setVBalance] = useVBalance()
     const [value, setValue] = useValue();
     const [amtIn, setAmtIn] = useAmountIn()
+    const [ allValidators, setAllValidators] = useAllValidators()
+    let { address } = useParams()
+    const [ tonConnectUI, setOptions] = useTonConnectUI();
+
+    let val = allValidators.find((val) => val.address == address)
 
     const HandleInputAmpunt = (e: FormEvent<HTMLInputElement>) => {
         setValue({value: e.currentTarget.value})
@@ -283,7 +351,7 @@ const UnDelegateBlock = () => {
         </>
     } else {
         button = <>
-            <ConfirmButton>
+            <ConfirmButton onClick={() => {sendUndelegateTx(value.value, val?.address!, vBalance.delegation_manager_address, tonConnectUI); }}>
                 <ButtonText>Confirm</ButtonText>
             </ConfirmButton>
         </>
