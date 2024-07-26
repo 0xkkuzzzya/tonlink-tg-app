@@ -225,7 +225,7 @@ export const ValidatorsPage = () => {
                     </InfoBlock>
                     <InfoBlock>
                         <InfoBlockTextName>TOTAL DELEGATED</InfoBlockTextName>
-                        <InfoBlockText>{valInfo.validator_delegation_amount != -1 ? valInfo.validator_delegation_amount + " TL" : <Skeleton sx={{ bgcolor: '#616161' }}  variant="rounded" width={100} height={20} animation="wave" /> } </InfoBlockText>
+                        <InfoBlockText>{valInfo.validator_delegation_amount != -1 ? valInfo.validator_delegation_amount + " stTON" : <Skeleton sx={{ bgcolor: '#616161' }}  variant="rounded" width={100} height={20} animation="wave" /> } </InfoBlockText>
                     </InfoBlock>
                 </div>
                 <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "20px" }}>
