@@ -94,6 +94,21 @@ const GetRewardButton = styled.button`
     background: #027BFE;
     border-radius: 10px;
     text-align: left;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+`
+
+const GetRewardButtonInactive = styled.button`
+    width: 100%;
+    height: 43px;
+    background: #757575;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -182,7 +197,8 @@ export const ValidatorsPage = () => {
             let balances = await GetDelegationByValidator(userFriendlyAddress, address!)
             setVBalance({
                 delegation_balance: balances[0],
-                reward_balance: balances[1]
+                reward_balance: balances[1],
+                delegation_manager_address: balances[2]
             })
         }
         main()
@@ -192,7 +208,7 @@ export const ValidatorsPage = () => {
         <MainContainer>
             <HeaderContainer>
                 {valInfo.validator_link_info.logo != "" ? <Logo src={Tonlink} /> : <Skeleton sx={{ bgcolor: '#616161' }} variant="circular" width={40} height={40} animation="wave"  /> }
-                <HeaderText>{ valInfo.validator_link_info.name != "" ? "Tonlink Labs" : <Skeleton sx={{ bgcolor: '#616161', fontSize: '25px' }} variant="text" width={150} height={25} animation="wave"  /> }</HeaderText>
+                <HeaderText>{ valInfo.validator_link_info.name != "" ? valInfo.validator_link_info.name : <Skeleton sx={{ bgcolor: '#616161', fontSize: '25px' }} variant="text" width={150} height={25} animation="wave"  /> }</HeaderText>
             </HeaderContainer>
             <DescriptionContainer>
                 <Description>
@@ -209,7 +225,7 @@ export const ValidatorsPage = () => {
                     </InfoBlock>
                     <InfoBlock>
                         <InfoBlockTextName>TOTAL DELEGATED</InfoBlockTextName>
-                        <InfoBlockText>{valInfo.validator_delegation_amount != -1 ? valInfo.validator_delegation_amount + " TL" : <Skeleton sx={{ bgcolor: '#616161' }}  variant="rounded" width={100} height={20} animation="wave" /> } </InfoBlockText>
+                        <InfoBlockText>{valInfo.validator_delegation_amount != -1 ? valInfo.validator_delegation_amount + " stTON" : <Skeleton sx={{ bgcolor: '#616161' }}  variant="rounded" width={100} height={20} animation="wave" /> } </InfoBlockText>
                     </InfoBlock>
                 </div>
                 <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "20px" }}>
@@ -225,24 +241,31 @@ export const ValidatorsPage = () => {
             </ContainerInfo>
             <GreyBlock>
                 <Text>My delegation</Text>
-                <Amount>{toFixed(vBalance.delegation_balance, 2)} stTON</Amount>
+                <Amount>{toFixed(vBalance.delegation_balance / 10**9, 2)} stTON</Amount>
             </GreyBlock>
             <GreyBlock>
                 <Text>My rewards</Text>
-                <Amount>{toFixed(vBalance.reward_balance, 2)} TL</Amount>
+                <Amount>{toFixed(vBalance.reward_balance / 10**9, 2)} TL</Amount>
             </GreyBlock>
-            <Link to={`/inputdelegation/${address}`} style={{ textDecoration: "none", width: "100%", height: "43px", marginTop: "20px" }}>
+            <Link to={`/inputdelegation/${address}`} style={{ textDecoration: "none", width: "100%" }}>
                 <GetRewardButton>
                     <Text>Delegation</Text>
                     <ActiveLink src={Active_Link} />
                 </GetRewardButton>
             </Link>
-            <Link to={`/getreward/${address}`} style={{ textDecoration: "none", width: "100%", height: "43px", marginTop: "20px" }}>
-                <GetRewardButton>
+            { vBalance.reward_balance == 0 ? 
+                <GetRewardButtonInactive>
                     <Text>Get Rewards</Text>
                     <ActiveLink src={Active_Link} />
-                </GetRewardButton>
-            </Link>
+                </GetRewardButtonInactive>
+                :
+                <Link to={`/getreward/${address}`} style={{ textDecoration: "none", width: "100%" }}>
+                    <GetRewardButton>
+                        <Text>Get Rewards</Text>
+                        <ActiveLink src={Active_Link} />
+                    </GetRewardButton>
+                </Link>
+            }
         </MainContainer>
     )
 }

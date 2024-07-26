@@ -15,5 +15,5 @@ export async function GetBalance(wallet: string): Promise<string> {
         } catch (e) {
                 console.log(e)
         }
-        return "0"
+        return ""
 }
