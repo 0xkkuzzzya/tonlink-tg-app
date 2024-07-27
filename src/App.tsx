@@ -34,12 +34,12 @@ function App() {
 
 	useEffect(() => {
 		async function main() {
-			let tb = await GetBalance(userFriendlyAddress === undefined ? "" : userFriendlyAddress)
+			//let tb = await GetBalance(userFriendlyAddress === undefined ? "" : userFriendlyAddress)
 			let alr = await GetAllDelegationAndReward(userFriendlyAddress === undefined ? "" : userFriendlyAddress)
 			setUserAllBalance({
 				all_delegation: alr[0],
 				all_rewards: alr[1],
-				balance: tb
+				balance: alr[2]
 			})
 
 			let av = await GetAllValidators()

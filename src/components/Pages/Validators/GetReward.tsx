@@ -1,6 +1,11 @@
-import React from "react";
+import React, { FormEvent, useEffect } from "react";
 import styled from "styled-components";
 import LogoValidator from '../../../assets/Validators-logo/TonlinkLabsLogo.webp'
+import { useAmountIn, useValue, useVBalance } from "../../../web3/useVBalance";
+import { useAllValidators } from "../../../web3/useUserAllBalance";
+import { useParams } from "react-router";
+import { SendTransactionRequest, TonConnectUI, useTonConnectUI } from "@tonconnect/ui-react";
+import { GetValidatorInfo } from "../../../web3/validators";
 
 const Container = styled.div`
     width: 90%;
@@ -57,6 +62,7 @@ const MAXButton = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 `
 
 const MAXButtonText = styled.a`
@@ -91,24 +97,106 @@ const Logo = styled.img`
     width: 80px;
     height: 80px;
     margin-bottom: 20px;
+    border-radius: 50px;
 `
 
+const InactiveConfirmButton = styled.button`
+    width: 100%;
+    height: 45px;
+    background: #757575;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    cursor: pointer;
+`
+
+const sendWithdrawalTx = async (amount: string, val_address: string, dm_address: string, tonConnectUI: TonConnectUI) => {
+    let val_info = await GetValidatorInfo(val_address)
+
+    let body = await (await fetch(`https://api.tonlink.network/api/api/v1/msg/withdrawal?address=${val_info.validator_manager_address_raw}&amount=${amount}`)).json()
+    if (body.ok == "true") {
+        let parsed_amount = (0.05 * 10**9)
+        let myTransaction: SendTransactionRequest = {
+            validUntil: Math.floor(Date.now() / 1000) + 600,
+            messages: []
+        }
+
+        let payload_from_api = body.result.payload
+
+        myTransaction.messages.push({
+            address: dm_address,
+            amount: parsed_amount.toString(),
+            payload: payload_from_api
+        })
+
+        tonConnectUI.sendTransaction(myTransaction);
+    }
+}
 
 export const GetReward = () => {
+    const [vBalance, setVBalance] = useVBalance();
+    const [value, setValue] = useValue();
+    const [amtIn, setAmtIn] = useAmountIn()
+    const [ allValidators, setAllValidators] = useAllValidators()
+    let { address } = useParams()
+    const [ tonConnectUI, setOptions] = useTonConnectUI()
+
+    let val = allValidators.find((val) => val.address == address)
+
+    const HandleInputAmpunt = (e: FormEvent<HTMLInputElement>) => {
+        setValue({value: e.currentTarget.value})
+    };
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setAmtIn(
+                {
+                    amt: value.value,
+                }
+            );
+        }, 350);
+        return () => clearTimeout(timeoutId);
+    }, [value]);
+
+    let button;
+
+    if (Number(value.value) == 0 || isNaN(Number(value.value))) {
+        button = <>
+            <InactiveConfirmButton>
+                <ButtonText>Enter amount</ButtonText>
+            </InactiveConfirmButton>
+        </> 
+    } else if (Number(value.value) > Number(vBalance.reward_balance) / 10**9) {
+        button = <>
+            <InactiveConfirmButton>
+                <ButtonText>Insufficient funds</ButtonText>
+            </InactiveConfirmButton>
+        </>
+    } else {
+        button = <>
+            <ConfirmButton onClick={() => { sendWithdrawalTx(value.value, val?.address!, vBalance.delegation_manager_address, tonConnectUI); }}>
+                <ButtonText>Confirm</ButtonText>
+            </ConfirmButton>
+        </>
+    }
+
     return (
         <Container>
-            <Logo src={LogoValidator}/>
-            <HeaderText>Collect reward from Tonlink Labs</HeaderText>
+            <Logo src={val?.logo}/>
+            <HeaderText>Collect reward from {val?.name}</HeaderText>
             <HeaderDescription>Enter the number of TLs you wish to receive from the validator</HeaderDescription>
             <InputContainer>
-                <Input inputMode='decimal' type="text" placeholder="0"></Input>
-                <MAXButton>
+                <Input inputMode='decimal' type="text" placeholder="0" onChange={HandleInputAmpunt} value={value.value}></Input>
+                <MAXButton onClick={() => {
+                    setValue({value: (Number(vBalance.reward_balance) / 10**9).toFixed(3)})
+                }}>
                     <MAXButtonText>MAX</MAXButtonText>
                 </MAXButton>
             </InputContainer>
-            <ConfirmButton>
-                <ButtonText>Confirm</ButtonText>
-            </ConfirmButton>
+            {button}
         </Container>
     )
 }
