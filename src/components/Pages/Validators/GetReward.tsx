@@ -75,6 +75,10 @@ const ConfirmButton = styled.button`
     justify-content: center;
     align-items: center;
     margin-bottom: 60px;
+    transition: all .3s ease-in-out;
+    &:active {
+         transform: scale(0.95);
+    }
 `
 
 const ButtonText = styled.a`

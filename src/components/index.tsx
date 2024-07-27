@@ -8,6 +8,7 @@ import { ConfirmDelegation } from "./Pages/ConfirmDelegation";
 import { MyDelegation } from "./Pages/MyDelegation";
 import { InputDelegation } from "./Pages/Validators/InputDelegation";
 import { GetReward } from "./Pages/Validators/GetReward";
+import { ConfirmPage } from "./Pages/ConfirmPage";
 
 
 const Container = styled.div`
@@ -38,6 +39,7 @@ export const MainIndex = () => {
                     <Route path="/confirmDelegation" element={<ConfirmDelegation />} />
                     <Route path="/inputdelegation/:address" element={<InputDelegation />} />
                     <Route path="/getreward/:address" element={<GetReward />} />
+                    <Route path="/confirmpage" element={<ConfirmPage />} />
                 </Routes>
             </PageContainer>
         </Container>
